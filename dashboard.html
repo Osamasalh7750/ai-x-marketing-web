@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - AI-X Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.css" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0f172a;
+            color: #fff;
+        }
+        .gradient-text { 
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .sidebar {
+            width: 280px;
+            transition: all 0.3s ease;
+        }
+        .main-content {
+            margin-right: 280px;
+            transition: all 0.3s ease;
+        }
+        .sidebar.collapsed {
+            transform: translateX(280px);
+        }
+        .main-content.expanded {
+            margin-right: 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .campaign-card {
+            transition: all 0.3s ease;
+        }
+        .campaign-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .notification-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            position: absolute;
+            top: 8px;
+            left: 8px;
+        }
+        .dropdown-menu {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- الشريط العلوي -->
+    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800">
+        <div class="px-6 py-4 flex items-center justify-between">
+            <!-- الجزء الأيسر: زر القائمة والبحث -->
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <button id="menuToggle" class="lg:hidden text-slate-400 hover:text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <div class="hidden md:flex items-center relative">
+                    <i class="fas fa-search absolute right-3 text-slate-500"></i>
+                    <input 
+                        type="text" 
+                        placeholder="بحث في المنصة..."
+                        class="bg-slate-800 border border-slate-700 rounded-xl pl-4 pr-10 py-2 w-64 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                    >
+                </div>
+            </div>
+
+            <!-- الجزء الأيمن: الإشعارات والمستخدم -->
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <!-- إشعارات -->
+                <div class="relative">
+                    <button id="notificationsBtn" class="relative p-2 rounded-lg hover:bg-slate-800">
+                        <i class="fas fa-bell text-xl text-slate-400"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <!-- قائمة الإشعارات -->
+                    <div id="notificationsMenu" class="hidden absolute left-0 mt-2 w-80 bg-slate-900 border border-slate-800 rounded-xl shadow-xl z-50">
+                        <div class="p-4 border-b border-slate-800">
+                            <h3 class="font-bold">الإشعارات</h3>
+                        </div>
+                        <div class="max-h-96 overflow-y-auto">
+                            <div class="p-4 border-b border-slate-800 hover:bg-slate-800 cursor-pointer">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-500/20 p-2 rounded-lg ml-3">
+                                        <i class="fas fa-chart-line text-blue-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">حملتك "تخفيضات الصيف" حققت هدف ROAS</p>
+                                        <p class="text-sm text-slate-400">منذ 2 ساعة</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 border-b border-slate-800 hover:bg-slate-800 cursor-pointer">
+                                <div class="flex items-start">
+                                    <div class="bg-green-500/20 p-2 rounded-lg ml-3">
+                                        <i class="fas fa-check text-green-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">تمت الموافقة على حملتك الجديدة</p>
+                                        <p class="text-sm text-slate-400">منذ 5 ساعات</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <a href="#" class="text-blue-400 hover:text-blue-300 text-sm">عرض جميع الإشعارات</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- حساب المستخدم -->
+                <div class="relative">
+                    <button id="userMenuBtn" class="flex items-center space-x-3 space-x-reverse p-2 rounded-lg hover:bg-slate-800">
+                        <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center font-bold">
+                            أ
+                        </div>
+                        <div class="text-right hidden md:block">
+                            <div class="font-bold">أحمد محمد</div>
+                            <div class="text-sm text-slate-400">الخطة المتقدمة</div>
+                        </div>
+                        <i class="fas fa-chevron-down text-slate-400"></i>
+                    </button>
+                    <!-- قائمة المستخدم -->
+                    <div id="userMenu" class="hidden absolute left-0 mt-2 w-56 bg-slate-900 border border-slate-800 rounded-xl shadow-xl z-50">
+                        <div class="p-4 border-b border-slate-800">
+                            <div class="font-bold">أحمد محمد</div>
+                            <div class="text-sm text-slate-400">ahmed@example.com</div>
+                        </div>
+                        <div class="py-2">
+                            <a href="profile.html" class="flex items-center px-4 py-2 hover:bg-slate-800">
+                                <i class="fas fa-user ml-3 text-slate-400"></i>
+                                <span>الملف الشخصي</span>
+                            </a>
+                            <a href="billing.html" class="flex items-center px-4 py-2 hover:bg-slate-800">
+                                <i class="fas fa-credit-card ml-3 text-slate-400"></i>
+                                <span>الاشتراك والدفع</span>
+                            </a>
+                            <a href="settings.html" class="flex items-center px-4 py-2 hover:bg-slate-800">
+                                <i class="fas fa-cog ml-3 text-slate-400"></i>
+                                <span>الإعدادات</span>
+                            </a>
+                        </div>
+                        <div class="py-2 border-t border-slate-800">
+                            <a href="index.html" class="flex items-center px-4 py-2 hover:bg-slate-800 text-red-400">
+                                <i class="fas fa-sign-out-alt ml-3"></i>
+                                <span>تسجيل الخروج</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- القائمة الجانبية -->
+    <aside class="sidebar fixed right-0 top-0 h-screen bg-slate-900 border-l border-slate-800 overflow-y-auto">
+        <!-- اللوجو -->
+        <div class="p-6 border-b border-slate-800">
+            <div class="text-2xl font-bold gradient-text text-center">
+                <i class="fas fa-rocket mr-2"></i>AI-X Marketing
+            </div>
+            <div class="text-center text-slate-400 text-sm mt-2">إدارة الحملات الذكية</div>
+        </div>
+
+        <!-- القائمة الرئيسية -->
+        <nav class="p-4">
+            <div class="mb-8">
+                <div class="text-xs text-slate-500 mb-3 px-3">القائمة الرئيسية</div>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="dashboard.html" class="flex items-center px-3 py-3 rounded-xl bg-blue-900/30 text-blue-400 border border-blue-800">
+                            <i class="fas fa-home ml-3"></i>
+                            <span>لوحة التحكم</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="campaigns.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-bullhorn ml-3"></i>
+                            <span>الحملات الإعلانية</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-chart-bar ml-3"></i>
+                            <span>التحليلات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="audience.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-users ml-3"></i>
+                            <span>الجمهور</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="creatives.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-video ml-3"></i>
+                            <span>الإبداعات</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- أدوات متقدمة -->
+            <div class="mb-8">
+                <div class="text-xs text-slate-500 mb-3 px-3">أدوات متقدمة</div>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="automation.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-robot ml-3"></i>
+                            <span>الأتمتة</span>
+                            <span class="mr-auto text-xs bg-green-900 text-green-400 px-2 py-1 rounded-full">جديد</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ai-optimization.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-brain ml-3"></i>
+                            <span>التحسين بالذكاء الاصطناعي</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reports.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-file-alt ml-3"></i>
+                            <span>التقارير</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- الحساب -->
+            <div>
+                <div class="text-xs text-slate-500 mb-3 px-3">الحساب</div>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="billing.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-credit-card ml-3"></i>
+                            <span>الاشتراك والدفع</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="integrations.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-plug ml-3"></i>
+                            <span>التكاملات</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="support.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-headset ml-3"></i>
+                            <span>الدعم الفني</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ترقية الخطة -->
+            <div class="mt-8 mx-3 p-4 gradient-bg rounded-xl">
+                <div class="text-sm font-bold mb-2">هل تحتاج ميزات أكثر؟</div>
+                <p class="text-sm mb-3">ترقية إلى خطة المؤسسات للحصول على جميع الميزات</p>
+                <a href="pricing.html" class="block text-center bg-white text-blue-600 py-2 rounded-lg font-bold hover:bg-slate-100 transition">
+                    ترقية الآن
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content p-6">
+        <!-- العنوان وشريط الإجراءات السريعة -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-bold mb-2">مرحباً بعودتك، أحمد 👋</h1>
+                <p class="text-slate-400">إحصائيات أداء حملاتك لليوم 15 يناير 2025</p>
+            </div>
+            <div class="flex space-x-3 space-x-reverse mt-4 md:mt-0">
+                <button class="flex items-center gradient-bg text-white px-5 py-3 rounded-xl font-bold hover:opacity-90 transition">
+                    <i class="fas fa-plus ml-2"></i> حملة جديدة
+                </button>
+                <button class="flex items-center border border-slate-700 text-slate-300 px-5 py-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-download ml-2"></i> تصدير تقرير
+                </button>
+            </div>
+        </div>
+
+        <!-- بطاقات الإحصائيات -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="stat-card rounded-2xl p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <div class="text-slate-400 text-sm mb-1">إجمالي الإنفاق</div>
+                        <div class="text-2xl font-bold">$12,450</div>
+                    </div>
+                    <div class="bg-green-500/20 p-3 rounded-xl">
+                        <i class="fas fa-dollar-sign text-green-400"></i>
+                    </div>
+                </div>
+                <div class="text-sm text-green-400">
+                    <i class="fas fa-arrow-up mr-1"></i> +12.5% عن الشهر الماضي
+                </div>
+            </div>
+
+            <div class="stat-card rounded-2xl p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <div class="text-slate-400 text-sm mb-1">معدل التحويل</div>
+                        <div class="text-2xl font-bold">4.2%</div>
+                    </div>
+                    <div class="bg-blue-500/20 p-3 rounded-xl">
+                        <i class="fas fa-percentage text-blue-400"></i>
+                    </div>
+                </div>
+                <div class="text-sm text-green-400">
+                    <i class="fas fa-arrow-up mr-1"></i> +8.3% عن الأسبوع الماضي
+                </div>
+            </div>
+
+            <div class="stat-card rounded-2xl p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <div class="text-slate-400 text-sm mb-1">العائد على الإنفاق</div>
+                        <div class="text-2xl font-bold">3.8x</div>
+                    </div>
+                    <div class="bg-purple-500/20 p-3 rounded-xl">
+                        <i class="fas fa-chart-line text-purple-400"></i>
+                    </div>
+                </div>
+                <div class="text-sm text-red-400">
+                    <i class="fas fa-arrow-down mr-1"></i> -2.1% عن الأسبوع الماضي
+                </div>
+            </div>
+
+            <div class="stat-card rounded-2xl p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <div class="text-slate-400 text-sm mb-1">الحملات النشطة</div>
+                        <div class="text-2xl font-bold">8</div>
+                    </div>
+                    <div class="bg-amber-500/20 p-3 rounded-xl">
+                        <i class="fas fa-bullhorn text-amber-400"></i>
+                    </div>
+                </div>
+                <div class="text-sm text-slate-400">
+                    من أصل 12 حملة
+                </div>
+            </div>
+        </div>
+
+        <!-- الرسوم البيانية -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- رسم بياني 1 -->
+            <div class="stat-card rounded-2xl p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-bold">الأداء الأسبوعي</h3>
+                    <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 text-sm">
+                        <option>آخر 7 أيام</option>
+                        <option>آخر 30 يوماً</option>
+                        <option>آخر 90 يوماً</option>
+                    </select>
+                </div>
+                <div id="chart1" class="h-72"></div>
+            </div>
+
+            <!-- رسم بياني 2 -->
+            <div class="stat-card rounded-2xl p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-bold">توزيع الميزانية</h3>
+                    <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 text-sm">
+                        <option>حسب المنصة</option>
+                        <option>حسب الحملة</option>
+                        <option>حسب الجمهور</option>
+                    </select>
+                </div>
+                <div id="chart2" class="h-72"></div>
+            </div>
+        </div>
+
+        <!-- الحملات الأخيرة -->
+        <div class="stat-card rounded-2xl p-6 mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-bold">الحملات النشطة</h3>
+                <a href="campaigns.html" class="text-blue-400 hover:text-blue-300 text-sm">عرض الكل</a>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-right text-slate-400 border-b border-slate-800">
+                            <th class="pb-3 px-4">الحملة</th>
+                            <th class="pb-3 px-4">الحالة</th>
+                            <th class="pb-3 px-4">الإنفاق</th>
+                            <th class="pb-3 px-4">التحويلات</th>
+                            <th class="pb-3 px-4">ROAS</th>
+                            <th class="pb-3 px-4">الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800">
+                        <tr class="hover:bg-slate-800/50">
+                            <td class="py-4 px-4">
+                                <div class="font-medium">تخفيضات الصيف 2025</div>
+                                <div class="text-sm text-slate-400">بدأت منذ 15 يوماً</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-900/30 text-green-400">
+                                    <span class="w-2 h-2 rounded-full bg-green-400 ml-2"></span>
+                                    نشطة
+                                </span>
+                            </td>
+                            <td class="py-4 px-4 font-medium">$2,850</td>
+                            <td class="py-4 px-4">
+                                <div class="font-medium">1,240</div>
+                                <div class="text-sm text-slate-400">4.2% معدل تحويل</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <div class="font-medium">4.1x</div>
+                                <div class="text-sm text-green-400">+12% عن الهدف</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <button class="text-blue-400 hover:text-blue-300 mr-3">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-slate-400 hover:text-white">
+                                    <i class="fas fa-chart-bar"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50">
+                            <td class="py-4 px-4">
+                                <div class="font-medium">إطلاق المنتج الجديد</div>
+                                <div class="text-sm text-slate-400">بدأت منذ 7 أيام</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-900/30 text-blue-400">
+                                    <span class="w-2 h-2 rounded-full bg-blue-400 ml-2"></span>
+                                    قيد المراجعة
+                                </span>
+                            </td>
+                            <td class="py-4 px-4 font-medium">$1,250</td>
+                            <td class="py-4 px-4">
+                                <div class="font-medium">320</div>
+                                <div class="text-sm text-slate-400">2.8% معدل تحويل</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <div class="font-medium">2.4x</div>
+                                <div class="text-sm text-red-400">-15% عن الهدف</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <button class="text-blue-400 hover:text-blue-300 mr-3">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-slate-400 hover:text-white">
+                                    <i class="fas fa-chart-bar"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50">
+                            <td class="py-4 px-4">
+                                <div class="font-medium">عروض رمضان</div>
+                                <div class="text-sm text-slate-400">بدأت منذ 30 يوماً</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-amber-900/30 text-amber-400">
+                                    <span class="w-2 h-2 rounded-full bg-amber-400 ml-2"></span>
+                                    تحت التعديل
+                                </span>
+                            </td>
+                            <td class="py-4 px-4 font-medium">$4,200</td>
+                            <td class="py-4 px-4">
+                                <div class="font-medium">2,150</div>
+                                <div class="text-sm text-slate-400">5.1% معدل تحويل</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <div class="font-medium">4.8x</div>
+                                <div class="text-sm text-green-400">+20% عن الهدف</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <button class="text-blue-400 hover:text-blue-300 mr-3">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="text-slate-400 hover:text-white">
+                                    <i class="fas fa-chart-bar"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- النصائح والتوصيات -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- التوصيات -->
+            <div class="stat-card rounded-2xl p-6">
+                <h3 class="text-lg font-bold mb-6">توصيات الذكاء الاصطناعي</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3 space-x-reverse p-4 bg-blue-900/20 rounded-xl border border-blue-800">
+                        <i class="fas fa-lightbulb text-blue-400 mt-1"></i>
+                        <div>
+                            <div class="font-medium mb-1">زيادة الميزانية</div>
+                            <p class="text-sm text-slate-400">حملة "تخفيضات الصيف" تحقق ROAS ممتاز. اقتراح زيادة الميزانية بمقدار 20%</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3 space-x-reverse p-4 bg-purple-900/20 rounded-xl border border-purple-800">
+                        <i class="fas fa-adjust text-purple-400 mt-1"></i>
+                        <div>
+                            <div class="font-medium mb-1">تعديل المزايدة</div>
+                            <p class="text-sm text-slate-400">اقتراح خفض المزايدة في حملة "إطلاق المنتج" بمقدار 15% لتحسين ROAS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الحملات القادمة -->
+            <div class="stat-card rounded-2xl p-6">
+                <h3 class="text-lg font-bold mb-6">الحملات المجدولة</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-slate-800/30 rounded-xl">
+                        <div>
+                            <div class="font-medium">عيد الأضحى</div>
+                            <div class="text-sm text-slate-400">تبدأ بعد 45 يوماً</div>
+                        </div>
+                        <div class="text-amber-400">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-slate-800/30 rounded-xl">
+                        <div>
+                            <div class="font-medium">العودة للمدارس</div>
+                            <div class="text-sm text-slate-400">تبدأ بعد 60 يوماً</div>
+                        </div>
+                        <div class="text-blue-400">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- أداء المنصة -->
+            <div class="stat-card rounded-2xl p-6">
+                <h3 class="text-lg font-bold mb-6">أداء المنصة</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-slate-400">استخدام API</span>
+                            <span class="font-medium">42%</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-500 rounded-full" style="width: 42%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-slate-400">مساحة التخزين</span>
+                            <span class="font-medium">1.2GB / 5GB</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-green-500 rounded-full" style="width: 24%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-slate-400">سرعة المعالجة</span>
+                            <span class="font-medium">ممتازة</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-purple-500 rounded-full" style="width: 92%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- القائمة الجوالية -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-slate-900 z-50 lg:hidden">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <div class="text-2xl font-bold gradient-text">AI-X Marketing</div>
+                <button id="closeMenu" class="text-slate-400 hover:text-white">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <!-- نفس قائمة الجانبية -->
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="border-t border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                <p>© 2025 AI-X Marketing. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="privacy-policy.html" class="hover:text-white transition">سياسة الخصوصية</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition">شروط الخدمة</a>
+                    <a href="contact.html" class="hover:text-white transition">اتصل بنا</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- مكتبة الرسوم البيانية -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // إدارة القوائم المنسدلة
+        document.getElementById('notificationsBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const menu = document.getElementById('notificationsMenu');
+            menu.classList.toggle('hidden');
+            
+            // إخفاء القائمة الأخرى
+            document.getElementById('userMenu').classList.add('hidden');
+        });
+
+        document.getElementById('userMenuBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const menu = document.getElementById('userMenu');
+            menu.classList.toggle('hidden');
+            
+            // إخفاء القائمة الأخرى
+            document.getElementById('notificationsMenu').classList.add('hidden');
+        });
+
+        // إغلاق القوائم عند النقر خارجها
+        document.addEventListener('click', function() {
+            document.getElementById('notificationsMenu').classList.add('hidden');
+            document.getElementById('userMenu').classList.add('hidden');
+        });
+
+        // منع إغلاق القوائم عند النقر داخلها
+        document.getElementById('notificationsMenu').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        document.getElementById('userMenu').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // القائمة الجوالية
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.add('open');
+        });
+
+        document.getElementById('closeMenu').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.remove('open');
+        });
+
+        // الرسوم البيانية
+        document.addEventListener('DOMContentLoaded', function() {
+            // الرسم البياني 1: الأداء الأسبوعي
+            var options1 = {
+                series: [{
+                    name: 'الإنفاق',
+                    data: [3100, 4200, 3800, 5100, 4900, 6200, 5500]
+                }, {
+                    name: 'الإيرادات',
+                    data: [9800, 12200, 11400, 15800, 15200, 18600, 16500]
+                }],
+                chart: {
+                    type: 'area',
+                    height: 350,
+                    fontFamily: 'Tajawal',
+                    toolbar: {
+                        show: false
+                    },
+                    background: 'transparent',
+                    foreColor: '#94a3b8'
+                },
+                colors: ['#3b82f6', '#10b981'],
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth',
+                    width: 2
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shadeIntensity: 1,
+                        opacityFrom: 0.7,
+                        opacityTo: 0.3,
+                        stops: [0, 90, 100]
+                    }
+                },
+                xaxis: {
+                    categories: ['السبت', 'الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'],
+                    labels: {
+                        style: {
+                            colors: '#64748b'
+                        }
+                    }
+                },
+                yaxis: {
+                    labels: {
+                        formatter: function(value) {
+                            return '$' + value.toLocaleString();
+                        },
+                        style: {
+                            colors: '#64748b'
+                        }
+                    }
+                },
+                legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    labels: {
+                        colors: '#94a3b8'
+                    }
+                },
+                grid: {
+                    borderColor: '#334155',
+                    strokeDashArray: 4
+                },
+                tooltip: {
+                    theme: 'dark',
+                    y: {
+                        formatter: function(value) {
+                            return '$' + value.toLocaleString();
+                        }
+                    }
+                }
+            };
+
+            var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+            chart1.render();
+
+            // الرسم البياني 2: توزيع الميزانية
+            var options2 = {
+                series: [44, 55, 13, 43, 22],
+                chart: {
+                    type: 'donut',
+                    height: 350,
+                    fontFamily: 'Tajawal',
+                    background: 'transparent',
+                    foreColor: '#94a3b8'
+                },
+                colors: ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ef4444'],
+                labels: ['تيك توك', 'إنستغرام', 'سناب شات', 'تويتر', 'أخرى'],
+                legend: {
+                    position: 'bottom',
+                    horizontalAlign: 'center',
+                    labels: {
+                        colors: '#94a3b8'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '65%',
+                            labels: {
+                                show: true,
+                                total: {
+                                    show: true,
+                                    label: 'إجمالي الإنفاق',
+                                    color: '#cbd5e1',
+                                    formatter: function (w) {
+                                        return '$12,450'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    style: {
+                        colors: ['#fff']
+                    },
+                    dropShadow: {
+                        enabled: true
+                    }
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }]
+            };
+
+            var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+            chart2.render();
+        });
+
+        // تحديث البيانات الوهمية
+        function updateMockData() {
+            // تحديث بطاقات الإحصائيات
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                const numbers = card.querySelectorAll('.text-2xl');
+                numbers.forEach(num => {
+                    if (num.textContent.includes('$')) {
+                        const current = parseInt(num.textContent.replace('$', '').replace(',', ''));
+                        const change = Math.floor(Math.random() * 200) - 100;
+                        const newValue = Math.max(0, current + change);
+                        num.textContent = '$' + newValue.toLocaleString();
+                    } else if (num.textContent.includes('%')) {
+                        const current = parseFloat(num.textContent.replace('%', ''));
+                        const change = (Math.random() * 2) - 1;
+                        const newValue = Math.max(0, Math.min(10, current + change));
+                        num.textContent = newValue.toFixed(1) + '%';
+                    } else if (num.textContent.includes('x')) {
+                        const current = parseFloat(num.textContent.replace('x', ''));
+                        const change = (Math.random() * 0.5) - 0.25;
+                        const newValue = Math.max(0.5, Math.min(5, current + change));
+                        num.textContent = newValue.toFixed(1) + 'x';
+                    } else if (!isNaN(num.textContent)) {
+                        const current = parseInt(num.textContent);
+                        const change = Math.floor(Math.random() * 3) - 1;
+                        const newValue = Math.max(0, current + change);
+                        num.textContent = newValue;
+                    }
+                });
+            });
+        }
+
+        // تحديث البيانات كل 30 ثانية (محاكاة للتحديث الحي)
+        setInterval(updateMockData, 30000);
+
+        // محاكاة التحديثات في الوقت الحقيقي
+        function simulateRealTimeUpdates() {
+            const notifications = [
+                'حملة جديدة بدأت العمل',
+                'تم تحقيق هدف ROAS في حملة "تخفيضات الصيف"',
+                'توصية جديدة من الذكاء الاصطناعي',
+                'تم تحديث تقرير الأداء الشهري'
+            ];
+            
+            const randomNotif = notifications[Math.floor(Math.random() * notifications.length)];
+            console.log('تحديث جديد:', randomNotif);
+            
+            // هنا يمكنك إضافة التحديثات إلى قائمة الإشعارات
+        }
+
+        // تحديث كل دقيقة (محاكاة)
+        setInterval(simulateRealTimeUpdates, 60000);
+    </script>
+
+</body>
+</html>

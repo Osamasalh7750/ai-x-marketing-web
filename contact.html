@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتصل بنا - AI-X Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { 
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        .gradient-text { 
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .contact-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+        .input-focus:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .success-message {
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- شريط التنقل العلوي -->
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
+        <a href="index.html" class="text-2xl font-bold gradient-text flex items-center">
+            <i class="fas fa-rocket mr-2"></i>AI-X Marketing
+        </a>
+        <div class="flex items-center space-x-4 space-x-reverse">
+            <a href="login.html" class="text-slate-300 hover:text-white px-3 py-2 hidden md:inline">تسجيل الدخول</a>
+            <a href="register.html" class="border border-blue-500 text-blue-500 hover:bg-blue-900 px-5 py-2 rounded-lg transition duration-200">إنشاء حساب</a>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="max-w-7xl mx-auto py-12 px-4">
+        <!-- العنوان الرئيسي -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">تواصل مع فريقنا</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">
+                نحن هنا لمساعدتك في رحلتك التسويقية. فريق الدعم لدينا جاهز للإجابة على جميع استفساراتك.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 mb-16">
+            <!-- بطاقة البريد الإلكتروني -->
+            <div class="contact-card rounded-2xl p-8 text-center">
+                <div class="bg-blue-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-envelope text-3xl text-blue-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">البريد الإلكتروني</h3>
+                <p class="text-slate-400 mb-4">للأسئلة العامة والدعم الفني والمبيعات</p>
+                <a href="mailto:osamah@ai-x-marketing.com" class="text-blue-400 hover:text-blue-300 text-lg font-medium inline-block">
+                    osamah@ai-x-marketing.com
+                </a>
+                <div class="mt-4 text-sm text-slate-500">
+                    متوسط وقت الرد: 4 ساعات عمل
+                </div>
+            </div>
+
+            <!-- بطاقة الدعم الفني -->
+            <div class="contact-card rounded-2xl p-8 text-center">
+                <div class="bg-green-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-headset text-3xl text-green-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">الدعم الفني</h3>
+                <p class="text-slate-400 mb-4">للمساعدة التقنية واستكشاف الأخطاء وإصلاحها</p>
+                <div class="space-y-2">
+                    <div class="text-green-400 font-medium">+971 50 123 4567</div>
+                    <div class="text-sm text-slate-500">متوفر من الأحد إلى الخميس</div>
+                    <div class="text-sm text-slate-500">9:00 صباحاً - 6:00 مساءً</div>
+                </div>
+            </div>
+
+            <!-- بطاقة المقر الرئيسي -->
+            <div class="contact-card rounded-2xl p-8 text-center">
+                <div class="bg-purple-500/20 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-map-marker-alt text-3xl text-purple-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">المقر الرئيسي</h3>
+                <p class="text-slate-400 mb-4">دبي، الإمارات العربية المتحدة</p>
+                <div class="text-purple-400 font-medium">
+                    برج دبي للأعمال<br>
+                    الطابق 12، مكتب 1204
+                </div>
+                <div class="mt-4 text-sm text-slate-500">
+                    الاجتماعات بتنسيق مسبق فقط
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم النموذج والخريطة -->
+        <div class="grid lg:grid-cols-2 gap-12">
+            <!-- نموذج الاتصال -->
+            <div>
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold mb-4">أرسل رسالة مباشرة</h2>
+                    <p class="text-slate-400">
+                        املأ النموذج أدناه وسيقوم فريقنا بالرد عليك في أقرب وقت ممكن. نحن نتطلع إلى سماع منك!
+                    </p>
+                </div>
+
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- الاسم الأول -->
+                        <div>
+                            <label class="block text-slate-300 mb-2 font-medium">الاسم الأول</label>
+                            <input 
+                                type="text" 
+                                id="firstName"
+                                name="firstName"
+                                required
+                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 input-focus"
+                                placeholder="أحمد"
+                            >
+                            <div id="firstNameError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+
+                        <!-- الاسم الأخير -->
+                        <div>
+                            <label class="block text-slate-300 mb-2 font-medium">الاسم الأخير</label>
+                            <input 
+                                type="text" 
+                                id="lastName"
+                                name="lastName"
+                                required
+                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 input-focus"
+                                placeholder="محمد"
+                            >
+                            <div id="lastNameError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+                    </div>
+
+                    <!-- البريد الإلكتروني -->
+                    <div>
+                        <label class="block text-slate-300 mb-2 font-medium">البريد الإلكتروني</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <i class="fas fa-envelope text-slate-500"></i>
+                            </div>
+                            <input 
+                                type="email" 
+                                id="email"
+                                name="email"
+                                required
+                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 input-focus"
+                                placeholder="ahmed@example.com"
+                                dir="ltr"
+                            >
+                        </div>
+                        <div id="emailError" class="text-red-500 text-sm mt-1 hidden"></div>
+                    </div>
+
+                    <!-- الهاتف -->
+                    <div>
+                        <label class="block text-slate-300 mb-2 font-medium">رقم الهاتف (اختياري)</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <i class="fas fa-phone text-slate-500"></i>
+                            </div>
+                            <input 
+                                type="tel" 
+                                id="phone"
+                                name="phone"
+                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 input-focus"
+                                placeholder="+971 50 123 4567"
+                                dir="ltr"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- نوع الاستفسار -->
+                    <div>
+                        <label class="block text-slate-300 mb-2 font-medium">نوع الاستفسار</label>
+                        <select 
+                            id="inquiryType"
+                            name="inquiryType"
+                            class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 input-focus"
+                        >
+                            <option value="">اختر نوع الاستفسار</option>
+                            <option value="sales">المبيعات والاشتراكات</option>
+                            <option value="technical">الدعم الفني</option>
+                            <option value="billing">الفواتير والمدفوعات</option>
+                            <option value="partnership">شراكات الأعمال</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                        <div id="inquiryError" class="text-red-500 text-sm mt-1 hidden"></div>
+                    </div>
+
+                    <!-- الرسالة -->
+                    <div>
+                        <label class="block text-slate-300 mb-2 font-medium">الرسالة</label>
+                        <textarea 
+                            id="message"
+                            name="message"
+                            rows="5"
+                            required
+                            class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 input-focus"
+                            placeholder="أخبرنا كيف يمكننا مساعدتك..."
+                        ></textarea>
+                        <div id="messageError" class="text-red-500 text-sm mt-1 hidden"></div>
+                    </div>
+
+                    <!-- زر الإرسال -->
+                    <button 
+                        type="submit" 
+                        id="submitBtn"
+                        class="w-full gradient-bg text-white font-bold py-4 px-4 rounded-xl hover:opacity-90 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                    >
+                        <span id="btnText">إرسال الرسالة</span>
+                        <span id="btnLoading" class="hidden">
+                            <i class="fas fa-spinner fa-spin ml-2"></i>جاري الإرسال...
+                        </span>
+                    </button>
+
+                    <!-- رسالة النجاح -->
+                    <div id="successMessage" class="hidden success-message p-4 bg-green-900/30 border border-green-800 rounded-xl">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-400 text-xl ml-3"></i>
+                            <div>
+                                <div class="font-bold text-green-400">تم إرسال رسالتك بنجاح!</div>
+                                <p class="text-slate-300 text-sm mt-1">سنقوم بالرد عليك خلال 24 ساعة عمل.</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- الخريطة والمعلومات -->
+            <div class="space-y-8">
+                <!-- خريطة -->
+                <div class="map-container">
+                    <div class="relative h-80 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+                        <!-- خريطة وهمية بديلة -->
+                        <div class="text-center p-8">
+                            <i class="fas fa-map-marked-alt text-6xl text-blue-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">موقعنا في دبي</h3>
+                            <p class="text-slate-400 mb-4">
+                                برج دبي للأعمال، منطقة دبي للإنترنت
+                            </p>
+                            <div class="inline-flex items-center space-x-2 space-x-reverse text-blue-400">
+                                <i class="fas fa-directions"></i>
+                                <span>احصل على الاتجاهات</span>
+                            </div>
+                        </div>
+                        <!-- علامة الموقع -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="relative">
+                                <div class="w-8 h-8 bg-red-500 rounded-full animate-ping opacity-75"></div>
+                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-red-500 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- معلومات الاتصال الإضافية -->
+                <div class="contact-card rounded-2xl p-8">
+                    <h3 class="text-xl font-bold mb-6">معلومات إضافية</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- ساعات العمل -->
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="bg-amber-500/20 p-3 rounded-xl">
+                                <i class="fas fa-clock text-amber-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">ساعات العمل</h4>
+                                <p class="text-slate-400 text-sm">
+                                    الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً<br>
+                                    الجمعة والسبت: مغلق
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- الدعم الفني -->
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="bg-blue-500/20 p-3 rounded-xl">
+                                <i class="fas fa-life-ring text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">مركز المساعدة</h4>
+                                <p class="text-slate-400 text-sm mb-2">
+                                    ابحث عن إجابات لأسئلتك الشائعة
+                                </p>
+                                <a href="help-center.html" class="text-blue-400 hover:text-blue-300 text-sm">
+                                    زيارة مركز المساعدة →
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- الوثائق القانونية -->
+                        <div class="flex items-start space-x-4 space-x-reverse">
+                            <div class="bg-purple-500/20 p-3 rounded-xl">
+                                <i class="fas fa-file-contract text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">الوثائق القانونية</h4>
+                                <p class="text-slate-400 text-sm mb-2">
+                                    الوصول إلى جميع وثائقنا القانونية
+                                </p>
+                                <div class="flex space-x-4 space-x-reverse text-sm">
+                                    <a href="privacy-policy.html" class="text-blue-400 hover:text-blue-300">سياسة الخصوصية</a>
+                                    <a href="terms-of-service.html" class="text-blue-400 hover:text-blue-300">شروط الخدمة</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- نموذج طلب اتصال -->
+                <div class="contact-card rounded-2xl p-8">
+                    <h3 class="text-xl font-bold mb-4">طلب اتصال فوري</h3>
+                    <p class="text-slate-400 mb-6 text-sm">
+                        هل تفضل أن نتصل بك؟ اترك رقم هاتفك وسنقوم بالاتصال بك في الوقت المناسب لك.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <i class="fas fa-mobile-alt text-slate-500"></i>
+                            </div>
+                            <input 
+                                type="tel" 
+                                placeholder="رقم الهاتف"
+                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                            >
+                        </div>
+                        <select class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200">
+                            <option>اختر الوقت المناسب</option>
+                            <option>9:00 صباحاً - 12:00 ظهراً</option>
+                            <option>12:00 ظهراً - 3:00 مساءً</option>
+                            <option>3:00 مساءً - 6:00 مساءً</option>
+                        </select>
+                        <button class="w-full border border-blue-500 text-blue-500 py-3 rounded-xl hover:bg-blue-900 transition duration-200">
+                            طلب اتصال
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأسئلة الشائعة -->
+        <div class="mt-20">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">الأسئلة الشائعة</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- سؤال 1 -->
+                <div class="contact-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-blue-500/20 p-3 rounded-xl">
+                            <i class="fas fa-question-circle text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">ما هي مدة فترة التجربة المجانية؟</h4>
+                            <p class="text-slate-400 text-sm">
+                                نقدم فترة تجريبية مجانية لمدة 14 يوماً مع وصول كامل لجميع الميزات. لا حاجة لبطاقة ائتمان للتسجيل.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- سؤال 2 -->
+                <div class="contact-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-green-500/20 p-3 rounded-xl">
+                            <i class="fas fa-sync-alt text-green-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">كيف يمكنني رفع حسابي إلى خطة أعلى؟</h4>
+                            <p class="text-slate-400 text-sm">
+                                يمكنك الترقية في أي وقت من خلال لوحة التحكم → الاشتراك والدفع. الترقية سارية فوراً.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- سؤال 3 -->
+                <div class="contact-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-purple-500/20 p-3 rounded-xl">
+                            <i class="fas fa-lock text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">هل بياناتي آمنة معكم؟</h4>
+                            <p class="text-slate-400 text-sm">
+                                نستخدم تشفير من الدرجة الأولى ونلتزم بأعلى معايير الأمان العالمية. اقرأ المزيد في سياسة الخصوصية.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- سؤال 4 -->
+                <div class="contact-card rounded-2xl p-6">
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-amber-500/20 p-3 rounded-xl">
+                            <i class="fas fa-plug text-amber-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2">هل تقدمون تكامل مع منصات أخرى؟</h4>
+                            <p class="text-slate-400 text-sm">
+                                نعم، نقدم تكامل مع TikTok API، Google Analytics، Meta Ads، وعدة منصات أخرى عبر واجهات برمجة التطبيقات.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="faq.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium">
+                    <span>عرض جميع الأسئلة الشائعة</span>
+                    <i class="fas fa-arrow-left mr-2"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="border-t border-slate-800 py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <!-- معلومات الشركة -->
+                <div>
+                    <div class="text-2xl font-bold gradient-text mb-4">AI-X Marketing</div>
+                    <p class="text-slate-400 mb-6">
+                        منصة رائدة في تحليل وأتمتة الحملات الإعلانية باستخدام الذكاء الاصطناعي.
+                    </p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition">
+                            <i class="fab fa-twitter text-slate-400"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition">
+                            <i class="fab fa-linkedin-in text-slate-400"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-700 transition">
+                            <i class="fab fa-instagram text-slate-400"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- روابط سريعة -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">روابط سريعة</h4>
+                    <ul class="space-y-3 text-slate-400">
+                        <li><a href="index.html" class="hover:text-white transition">الرئيسية</a></li>
+                        <li><a href="pricing.html" class="hover:text-white transition">الأسعار</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">عن الشركة</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition">المدونة</a></li>
+                    </ul>
+                </div>
+
+                <!-- المنتجات -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">المنتجات</h4>
+                    <ul class="space-y-3 text-slate-400">
+                        <li><a href="features.html" class="hover:text-white transition">المميزات</a></li>
+                        <li><a href="integrations.html" class="hover:text-white transition">التكاملات</a></li>
+                        <li><a href="api.html" class="hover:text-white transition">واجهة برمجة التطبيقات</a></li>
+                        <li><a href="mobile-app.html" class="hover:text-white transition">التطبيق المحمول</a></li>
+                    </ul>
+                </div>
+
+                <!-- الدعم -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6">الدعم</h4>
+                    <ul class="space-y-3 text-slate-400">
+                        <li><a href="help-center.html" class="hover:text-white transition">مركز المساعدة</a></li>
+                        <li><a href="documentation.html" class="hover:text-white transition">الوثائق</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">اتصل بنا</a></li>
+                        <li><a href="status.html" class="hover:text-white transition">حالة النظام</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- الحقوق -->
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                <p>© 2025 AI-X Marketing. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="privacy-policy.html" class="hover:text-white transition">سياسة الخصوصية</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition">شروط الخدمة</a>
+                    <a href="cookies.html" class="hover:text-white transition">ملفات تعريف الارتباط</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // عناصر DOM
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnLoading = document.getElementById('btnLoading');
+        const successMessage = document.getElementById('successMessage');
+
+        // التحقق من صحة البريد الإلكتروني
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // عرض خطأ
+        function showError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.classList.remove('hidden');
+            
+            // اهتزاز العنصر
+            const input = element.previousElementSibling;
+            input.classList.add('animate-shake');
+            setTimeout(() => {
+                input.classList.remove('animate-shake');
+            }, 500);
+        }
+
+        // إخفاء خطأ
+        function hideError(elementId) {
+            document.getElementById(elementId).classList.add('hidden');
+        }
+
+        // إرسال النموذج
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // جمع البيانات
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const inquiryType = document.getElementById('inquiryType').value;
+            const message = document.getElementById('message').value.trim();
+            
+            // التحقق من الصحة
+            let isValid = true;
+            
+            // التحقق من الاسم الأول
+            if (!firstName) {
+                showError('firstNameError', 'الاسم الأول مطلوب');
+                isValid = false;
+            } else {
+                hideError('firstNameError');
+            }
+            
+            // التحقق من الاسم الأخير
+            if (!lastName) {
+                showError('lastNameError', 'الاسم الأخير مطلوب');
+                isValid = false;
+            } else {
+                hideError('lastNameError');
+            }
+            
+            // التحقق من البريد الإلكتروني
+            if (!validateEmail(email)) {
+                showError('emailError', 'البريد الإلكتروني غير صحيح');
+                isValid = false;
+            } else {
+                hideError('emailError');
+            }
+            
+            // التحقق من نوع الاستفسار
+            if (!inquiryType) {
+                showError('inquiryError', 'الرجاء اختيار نوع الاستفسار');
+                isValid = false;
+            } else {
+                hideError('inquiryError');
+            }
+            
+            // التحقق من الرسالة
+            if (!message || message.length < 10) {
+                showError('messageError', 'الرسالة يجب أن تكون 10 أحرف على الأقل');
+                isValid = false;
+            } else {
+                hideError('messageError');
+            }
+            
+            if (!isValid) return;
+            
+            // عرض حالة التحميل
+            btnText.classList.add('hidden');
+            btnLoading.classList.remove('hidden');
+            submitBtn.disabled = true;
+            
+            // محاكاة إرسال البيانات إلى الخادم
+            try {
+                // في بيئة الإنتاج، استبدل هذا بـ:
+                // const response = await fetch('/api/contact', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({
+                //         firstName,
+                //         lastName,
+                //         email,
+                //         phone: document.getElementById('phone').value,
+                //         inquiryType,
+                //         message
+                //     })
+                // });
+                
+                // محاكاة تأخير الشبكة
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // عرض رسالة النجاح
+                successMessage.classList.remove('hidden');
+                
+                // إعادة تعيين النموذج
+                contactForm.reset();
+                
+                // إخفاء رسالة النجاح بعد 5 ثوانٍ
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+                
+                // إرجاع الزر إلى حالته الأصلية
+                setTimeout(() => {
+                    btnText.classList.remove('hidden');
+                    btnLoading.classList.add('hidden');
+                    submitBtn.disabled = false;
+                }, 1500);
+                
+                // إرسال بريد إلكتروني وهمي (في الواقع، سيتم إرساله من الخادم)
+                console.log('تم إرسال رسالة الاتصال إلى: osamah@ai-x-marketing.com');
+                console.log('بيانات الرسالة:', {
+                    firstName,
+                    lastName,
+                    email,
+                    inquiryType,
+                    message
+                });
+                
+            } catch (error) {
+                // إرجاع الزر إلى حالته الأصلية
+                btnText.classList.remove('hidden');
+                btnLoading.classList.add('hidden');
+                submitBtn.disabled = false;
+                
+                // عرض رسالة خطأ
+                showError('messageError', 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.');
+            }
+        });
+
+        // إضافة تأثير الاهتزاز
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+            .animate-shake {
+                animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // تأثيرات عند التمرير
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactCards = document.querySelectorAll('.contact-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            contactCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+
+</body>
+</html>
