@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم - AI-X Marketing</title>
+    <title>Dashboard - AI-X Marketing Platform</title>
+    <meta name="description" content="AI-X Marketing Platform dashboard for managing multi-platform advertising campaigns with AI optimization">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/apexcharts@3.35.0/dist/apexcharts.css" rel="stylesheet">
     <style>
         body { 
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: #0f172a;
             color: #fff;
         }
@@ -28,14 +29,14 @@
             transition: all 0.3s ease;
         }
         .main-content {
-            margin-right: 280px;
+            margin-left: 280px;
             transition: all 0.3s ease;
         }
         .sidebar.collapsed {
-            transform: translateX(280px);
+            transform: translateX(-280px);
         }
         .main-content.expanded {
-            margin-right: 0;
+            margin-left: 0;
         }
         .stat-card {
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
@@ -56,127 +57,152 @@
             border-radius: 50%;
             position: absolute;
             top: 8px;
-            left: 8px;
+            right: 8px;
         }
         .dropdown-menu {
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         .mobile-menu {
-            transform: translateX(100%);
+            transform: translateX(-100%);
             transition: transform 0.3s ease;
         }
         .mobile-menu.open {
             transform: translateX(0);
+        }
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-right: 4px;
+            margin-bottom: 4px;
         }
         @media (max-width: 768px) {
             .sidebar {
                 display: none;
             }
             .main-content {
-                margin-right: 0;
+                margin-left: 0;
             }
         }
     </style>
 </head>
 <body class="text-white">
 
-    <!-- الشريط العلوي -->
+    <!-- Top Navigation Bar -->
     <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800">
         <div class="px-6 py-4 flex items-center justify-between">
-            <!-- الجزء الأيسر: زر القائمة والبحث -->
-            <div class="flex items-center space-x-4 space-x-reverse">
+            <!-- Left: Menu button and search -->
+            <div class="flex items-center space-x-4">
                 <button id="menuToggle" class="lg:hidden text-slate-400 hover:text-white">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
                 <div class="hidden md:flex items-center relative">
-                    <i class="fas fa-search absolute right-3 text-slate-500"></i>
+                    <i class="fas fa-search absolute left-3 text-slate-500"></i>
                     <input 
                         type="text" 
-                        placeholder="بحث في المنصة..."
-                        class="bg-slate-800 border border-slate-700 rounded-xl pl-4 pr-10 py-2 w-64 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                        placeholder="Search platform..."
+                        class="bg-slate-800 border border-slate-700 rounded-xl pl-10 pr-4 py-2 w-64 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     >
                 </div>
             </div>
 
-            <!-- الجزء الأيمن: الإشعارات والمستخدم -->
-            <div class="flex items-center space-x-4 space-x-reverse">
-                <!-- إشعارات -->
+            <!-- Right: Notifications and user -->
+            <div class="flex items-center space-x-4">
+                <!-- Notifications -->
                 <div class="relative">
                     <button id="notificationsBtn" class="relative p-2 rounded-lg hover:bg-slate-800">
                         <i class="fas fa-bell text-xl text-slate-400"></i>
                         <span class="notification-dot"></span>
                     </button>
-                    <!-- قائمة الإشعارات -->
-                    <div id="notificationsMenu" class="hidden absolute left-0 mt-2 w-80 bg-slate-900 border border-slate-800 rounded-xl shadow-xl z-50">
+                    <!-- Notifications dropdown -->
+                    <div id="notificationsMenu" class="hidden absolute right-0 mt-2 w-80 bg-slate-900 border border-slate-800 rounded-xl shadow-xl z-50">
                         <div class="p-4 border-b border-slate-800">
-                            <h3 class="font-bold">الإشعارات</h3>
+                            <h3 class="font-bold">Notifications</h3>
                         </div>
                         <div class="max-h-96 overflow-y-auto">
                             <div class="p-4 border-b border-slate-800 hover:bg-slate-800 cursor-pointer">
                                 <div class="flex items-start">
-                                    <div class="bg-blue-500/20 p-2 rounded-lg ml-3">
+                                    <div class="bg-blue-500/20 p-2 rounded-lg mr-3">
                                         <i class="fas fa-chart-line text-blue-400"></i>
                                     </div>
                                     <div>
-                                        <p class="font-medium">حملتك "تخفيضات الصيف" حققت هدف ROAS</p>
-                                        <p class="text-sm text-slate-400">منذ 2 ساعة</p>
+                                        <p class="font-medium">Campaign "Summer Sales" achieved ROAS target</p>
+                                        <p class="text-sm text-slate-400">2 hours ago</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="p-4 border-b border-slate-800 hover:bg-slate-800 cursor-pointer">
                                 <div class="flex items-start">
-                                    <div class="bg-green-500/20 p-2 rounded-lg ml-3">
+                                    <div class="bg-green-500/20 p-2 rounded-lg mr-3">
                                         <i class="fas fa-check text-green-400"></i>
                                     </div>
                                     <div>
-                                        <p class="font-medium">تمت الموافقة على حملتك الجديدة</p>
-                                        <p class="text-sm text-slate-400">منذ 5 ساعات</p>
+                                        <p class="font-medium">New campaign approved by platform</p>
+                                        <p class="text-sm text-slate-400">5 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 border-b border-slate-800 hover:bg-slate-800 cursor-pointer">
+                                <div class="flex items-start">
+                                    <div class="bg-purple-500/20 p-2 rounded-lg mr-3">
+                                        <i class="fas fa-sync-alt text-purple-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Meta API connection optimized</p>
+                                        <p class="text-sm text-slate-400">Yesterday</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="p-4 text-center">
-                            <a href="#" class="text-blue-400 hover:text-blue-300 text-sm">عرض جميع الإشعارات</a>
+                            <a href="#" class="text-blue-400 hover:text-blue-300 text-sm">View all notifications</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- حساب المستخدم -->
+                <!-- User account -->
                 <div class="relative">
-                    <button id="userMenuBtn" class="flex items-center space-x-3 space-x-reverse p-2 rounded-lg hover:bg-slate-800">
+                    <button id="userMenuBtn" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-800">
                         <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center font-bold">
-                            أ
+                            J
                         </div>
-                        <div class="text-right hidden md:block">
-                            <div class="font-bold">أحمد محمد</div>
-                            <div class="text-sm text-slate-400">الخطة المتقدمة</div>
+                        <div class="text-left hidden md:block">
+                            <div class="font-bold">John Smith</div>
+                            <div class="text-sm text-slate-400">Pro Plan</div>
                         </div>
                         <i class="fas fa-chevron-down text-slate-400"></i>
                     </button>
-                    <!-- قائمة المستخدم -->
-                    <div id="userMenu" class="hidden absolute left-0 mt-2 w-56 bg-slate-900 border border-slate-800 rounded-xl shadow-xl z-50">
+                    <!-- User dropdown menu -->
+                    <div id="userMenu" class="hidden absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-800 rounded-xl shadow-xl z-50">
                         <div class="p-4 border-b border-slate-800">
-                            <div class="font-bold">أحمد محمد</div>
-                            <div class="text-sm text-slate-400">ahmed@example.com</div>
+                            <div class="font-bold">John Smith</div>
+                            <div class="text-sm text-slate-400">john@example.com</div>
                         </div>
                         <div class="py-2">
                             <a href="profile.html" class="flex items-center px-4 py-2 hover:bg-slate-800">
-                                <i class="fas fa-user ml-3 text-slate-400"></i>
-                                <span>الملف الشخصي</span>
+                                <i class="fas fa-user mr-3 text-slate-400"></i>
+                                <span>Profile</span>
                             </a>
                             <a href="billing.html" class="flex items-center px-4 py-2 hover:bg-slate-800">
-                                <i class="fas fa-credit-card ml-3 text-slate-400"></i>
-                                <span>الاشتراك والدفع</span>
+                                <i class="fas fa-credit-card mr-3 text-slate-400"></i>
+                                <span>Subscription & Billing</span>
                             </a>
                             <a href="settings.html" class="flex items-center px-4 py-2 hover:bg-slate-800">
-                                <i class="fas fa-cog ml-3 text-slate-400"></i>
-                                <span>الإعدادات</span>
+                                <i class="fas fa-cog mr-3 text-slate-400"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="api-keys.html" class="flex items-center px-4 py-2 hover:bg-slate-800">
+                                <i class="fas fa-key mr-3 text-slate-400"></i>
+                                <span>API Keys</span>
                             </a>
                         </div>
                         <div class="py-2 border-t border-slate-800">
                             <a href="index.html" class="flex items-center px-4 py-2 hover:bg-slate-800 text-red-400">
-                                <i class="fas fa-sign-out-alt ml-3"></i>
-                                <span>تسجيل الخروج</span>
+                                <i class="fas fa-sign-out-alt mr-3"></i>
+                                <span>Logout</span>
                             </a>
                         </div>
                     </div>
@@ -185,140 +211,174 @@
         </div>
     </header>
 
-    <!-- القائمة الجانبية -->
-    <aside class="sidebar fixed right-0 top-0 h-screen bg-slate-900 border-l border-slate-800 overflow-y-auto">
-        <!-- اللوجو -->
+    <!-- Sidebar -->
+    <aside class="sidebar fixed left-0 top-0 h-screen bg-slate-900 border-r border-slate-800 overflow-y-auto">
+        <!-- Logo -->
         <div class="p-6 border-b border-slate-800">
             <div class="text-2xl font-bold gradient-text text-center">
                 <i class="fas fa-rocket mr-2"></i>AI-X Marketing
             </div>
-            <div class="text-center text-slate-400 text-sm mt-2">إدارة الحملات الذكية</div>
+            <div class="text-center text-slate-400 text-sm mt-2">Multi-Platform Campaign Manager</div>
         </div>
 
-        <!-- القائمة الرئيسية -->
+        <!-- Main navigation -->
         <nav class="p-4">
             <div class="mb-8">
-                <div class="text-xs text-slate-500 mb-3 px-3">القائمة الرئيسية</div>
+                <div class="text-xs text-slate-500 mb-3 px-3">MAIN MENU</div>
                 <ul class="space-y-2">
                     <li>
                         <a href="dashboard.html" class="flex items-center px-3 py-3 rounded-xl bg-blue-900/30 text-blue-400 border border-blue-800">
-                            <i class="fas fa-home ml-3"></i>
-                            <span>لوحة التحكم</span>
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="campaigns.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-bullhorn ml-3"></i>
-                            <span>الحملات الإعلانية</span>
+                            <i class="fas fa-bullhorn mr-3"></i>
+                            <span>Advertising Campaigns</span>
                         </a>
                     </li>
                     <li>
                         <a href="analytics.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-chart-bar ml-3"></i>
-                            <span>التحليلات</span>
+                            <i class="fas fa-chart-bar mr-3"></i>
+                            <span>Analytics</span>
                         </a>
                     </li>
                     <li>
                         <a href="audience.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-users ml-3"></i>
-                            <span>الجمهور</span>
+                            <i class="fas fa-users mr-3"></i>
+                            <span>Audience</span>
                         </a>
                     </li>
                     <li>
                         <a href="creatives.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-video ml-3"></i>
-                            <span>الإبداعات</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- أدوات متقدمة -->
-            <div class="mb-8">
-                <div class="text-xs text-slate-500 mb-3 px-3">أدوات متقدمة</div>
-                <ul class="space-y-2">
-                    <li>
-                        <a href="automation.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-robot ml-3"></i>
-                            <span>الأتمتة</span>
-                            <span class="mr-auto text-xs bg-green-900 text-green-400 px-2 py-1 rounded-full">جديد</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ai-optimization.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-brain ml-3"></i>
-                            <span>التحسين بالذكاء الاصطناعي</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="reports.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-file-alt ml-3"></i>
-                            <span>التقارير</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- الحساب -->
-            <div>
-                <div class="text-xs text-slate-500 mb-3 px-3">الحساب</div>
-                <ul class="space-y-2">
-                    <li>
-                        <a href="billing.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-credit-card ml-3"></i>
-                            <span>الاشتراك والدفع</span>
+                            <i class="fas fa-video mr-3"></i>
+                            <span>Creatives</span>
                         </a>
                     </li>
                     <li>
                         <a href="integrations.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-plug ml-3"></i>
-                            <span>التكاملات</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="support.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
-                            <i class="fas fa-headset ml-3"></i>
-                            <span>الدعم الفني</span>
+                            <i class="fas fa-plug mr-3"></i>
+                            <span>Platform Integrations</span>
                         </a>
                     </li>
                 </ul>
             </div>
 
-            <!-- ترقية الخطة -->
+            <!-- Advanced Tools -->
+            <div class="mb-8">
+                <div class="text-xs text-slate-500 mb-3 px-3">ADVANCED TOOLS</div>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="automation.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-robot mr-3"></i>
+                            <span>Automation</span>
+                            <span class="ml-auto text-xs bg-green-900 text-green-400 px-2 py-1 rounded-full">NEW</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ai-optimization.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-brain mr-3"></i>
+                            <span>AI Optimization</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reports.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-file-alt mr-3"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="compliance.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-shield-alt mr-3"></i>
+                            <span>Compliance</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account -->
+            <div>
+                <div class="text-xs text-slate-500 mb-3 px-3">ACCOUNT</div>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="billing.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-credit-card mr-3"></i>
+                            <span>Subscription & Billing</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="api-management.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-code mr-3"></i>
+                            <span>API Management</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="support.html" class="flex items-center px-3 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition">
+                            <i class="fas fa-headset mr-3"></i>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Plan Upgrade -->
             <div class="mt-8 mx-3 p-4 gradient-bg rounded-xl">
-                <div class="text-sm font-bold mb-2">هل تحتاج ميزات أكثر؟</div>
-                <p class="text-sm mb-3">ترقية إلى خطة المؤسسات للحصول على جميع الميزات</p>
+                <div class="text-sm font-bold mb-2">Need more features?</div>
+                <p class="text-sm mb-3">Upgrade to Enterprise plan for all features</p>
                 <a href="pricing.html" class="block text-center bg-white text-blue-600 py-2 rounded-lg font-bold hover:bg-slate-100 transition">
-                    ترقية الآن
+                    Upgrade Now
                 </a>
+            </div>
+
+            <!-- Platform Status -->
+            <div class="mt-6 mx-3 p-4 bg-slate-800/50 rounded-xl">
+                <div class="text-sm font-bold mb-2">Platform Status</div>
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between">
+                        <span class="text-slate-400">Google Ads API</span>
+                        <span class="text-green-400">✓ Operational</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-400">Meta Business API</span>
+                        <span class="text-green-400">✓ Operational</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-400">TikTok API</span>
+                        <span class="text-amber-400">⚠️ Maintenance</span>
+                    </div>
+                </div>
             </div>
         </nav>
     </aside>
 
-    <!-- المحتوى الرئيسي -->
+    <!-- Main Content -->
     <main class="main-content p-6">
-        <!-- العنوان وشريط الإجراءات السريعة -->
+        <!-- Header and quick actions -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <div>
-                <h1 class="text-3xl font-bold mb-2">مرحباً بعودتك، أحمد 👋</h1>
-                <p class="text-slate-400">إحصائيات أداء حملاتك لليوم 15 يناير 2025</p>
+                <h1 class="text-3xl font-bold mb-2">Welcome back, John 👋</h1>
+                <p class="text-slate-400">Your campaign performance for January 15, 2025</p>
             </div>
-            <div class="flex space-x-3 space-x-reverse mt-4 md:mt-0">
+            <div class="flex space-x-3 mt-4 md:mt-0">
                 <button class="flex items-center gradient-bg text-white px-5 py-3 rounded-xl font-bold hover:opacity-90 transition">
-                    <i class="fas fa-plus ml-2"></i> حملة جديدة
+                    <i class="fas fa-plus mr-2"></i> New Campaign
                 </button>
                 <button class="flex items-center border border-slate-700 text-slate-300 px-5 py-3 rounded-xl hover:bg-slate-800 transition">
-                    <i class="fas fa-download ml-2"></i> تصدير تقرير
+                    <i class="fas fa-download mr-2"></i> Export Report
+                </button>
+                <button class="flex items-center border border-slate-700 text-slate-300 px-5 py-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-sync-alt mr-2"></i> Refresh Data
                 </button>
             </div>
         </div>
 
-        <!-- بطاقات الإحصائيات -->
+        <!-- Statistics Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div class="stat-card rounded-2xl p-6">
                 <div class="flex justify-between items-start mb-4">
                     <div>
-                        <div class="text-slate-400 text-sm mb-1">إجمالي الإنفاق</div>
+                        <div class="text-slate-400 text-sm mb-1">Total Spend</div>
                         <div class="text-2xl font-bold">$12,450</div>
                     </div>
                     <div class="bg-green-500/20 p-3 rounded-xl">
@@ -326,14 +386,14 @@
                     </div>
                 </div>
                 <div class="text-sm text-green-400">
-                    <i class="fas fa-arrow-up mr-1"></i> +12.5% عن الشهر الماضي
+                    <i class="fas fa-arrow-up mr-1"></i> +12.5% from last month
                 </div>
             </div>
 
             <div class="stat-card rounded-2xl p-6">
                 <div class="flex justify-between items-start mb-4">
                     <div>
-                        <div class="text-slate-400 text-sm mb-1">معدل التحويل</div>
+                        <div class="text-slate-400 text-sm mb-1">Conversion Rate</div>
                         <div class="text-2xl font-bold">4.2%</div>
                     </div>
                     <div class="bg-blue-500/20 p-3 rounded-xl">
@@ -341,14 +401,14 @@
                     </div>
                 </div>
                 <div class="text-sm text-green-400">
-                    <i class="fas fa-arrow-up mr-1"></i> +8.3% عن الأسبوع الماضي
+                    <i class="fas fa-arrow-up mr-1"></i> +8.3% from last week
                 </div>
             </div>
 
             <div class="stat-card rounded-2xl p-6">
                 <div class="flex justify-between items-start mb-4">
                     <div>
-                        <div class="text-slate-400 text-sm mb-1">العائد على الإنفاق</div>
+                        <div class="text-slate-400 text-sm mb-1">Return on Ad Spend</div>
                         <div class="text-2xl font-bold">3.8x</div>
                     </div>
                     <div class="bg-purple-500/20 p-3 rounded-xl">
@@ -356,14 +416,14 @@
                     </div>
                 </div>
                 <div class="text-sm text-red-400">
-                    <i class="fas fa-arrow-down mr-1"></i> -2.1% عن الأسبوع الماضي
+                    <i class="fas fa-arrow-down mr-1"></i> -2.1% from last week
                 </div>
             </div>
 
             <div class="stat-card rounded-2xl p-6">
                 <div class="flex justify-between items-start mb-4">
                     <div>
-                        <div class="text-slate-400 text-sm mb-1">الحملات النشطة</div>
+                        <div class="text-slate-400 text-sm mb-1">Active Campaigns</div>
                         <div class="text-2xl font-bold">8</div>
                     </div>
                     <div class="bg-amber-500/20 p-3 rounded-xl">
@@ -371,79 +431,87 @@
                     </div>
                 </div>
                 <div class="text-sm text-slate-400">
-                    من أصل 12 حملة
+                    out of 12 total campaigns
                 </div>
             </div>
         </div>
 
-        <!-- الرسوم البيانية -->
+        <!-- Charts -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-            <!-- رسم بياني 1 -->
+            <!-- Chart 1 -->
             <div class="stat-card rounded-2xl p-6">
                 <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-lg font-bold">الأداء الأسبوعي</h3>
+                    <h3 class="text-lg font-bold">Weekly Performance</h3>
                     <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 text-sm">
-                        <option>آخر 7 أيام</option>
-                        <option>آخر 30 يوماً</option>
-                        <option>آخر 90 يوماً</option>
+                        <option>Last 7 days</option>
+                        <option>Last 30 days</option>
+                        <option>Last 90 days</option>
                     </select>
                 </div>
                 <div id="chart1" class="h-72"></div>
             </div>
 
-            <!-- رسم بياني 2 -->
+            <!-- Chart 2 -->
             <div class="stat-card rounded-2xl p-6">
                 <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-lg font-bold">توزيع الميزانية</h3>
+                    <h3 class="text-lg font-bold">Budget Distribution by Platform</h3>
                     <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1 text-sm">
-                        <option>حسب المنصة</option>
-                        <option>حسب الحملة</option>
-                        <option>حسب الجمهور</option>
+                        <option>By Platform</option>
+                        <option>By Campaign</option>
+                        <option>By Audience</option>
                     </select>
                 </div>
                 <div id="chart2" class="h-72"></div>
             </div>
         </div>
 
-        <!-- الحملات الأخيرة -->
+        <!-- Recent Campaigns -->
         <div class="stat-card rounded-2xl p-6 mb-8">
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-lg font-bold">الحملات النشطة</h3>
-                <a href="campaigns.html" class="text-blue-400 hover:text-blue-300 text-sm">عرض الكل</a>
+                <h3 class="text-lg font-bold">Active Campaigns</h3>
+                <a href="campaigns.html" class="text-blue-400 hover:text-blue-300 text-sm">View All</a>
             </div>
             
             <div class="overflow-x-auto">
                 <table class="w-full">
                     <thead>
-                        <tr class="text-right text-slate-400 border-b border-slate-800">
-                            <th class="pb-3 px-4">الحملة</th>
-                            <th class="pb-3 px-4">الحالة</th>
-                            <th class="pb-3 px-4">الإنفاق</th>
-                            <th class="pb-3 px-4">التحويلات</th>
+                        <tr class="text-left text-slate-400 border-b border-slate-800">
+                            <th class="pb-3 px-4">Campaign</th>
+                            <th class="pb-3 px-4">Platforms</th>
+                            <th class="pb-3 px-4">Status</th>
+                            <th class="pb-3 px-4">Spend</th>
+                            <th class="pb-3 px-4">Conversions</th>
                             <th class="pb-3 px-4">ROAS</th>
-                            <th class="pb-3 px-4">الإجراءات</th>
+                            <th class="pb-3 px-4">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-800">
                         <tr class="hover:bg-slate-800/50">
                             <td class="py-4 px-4">
-                                <div class="font-medium">تخفيضات الصيف 2025</div>
-                                <div class="text-sm text-slate-400">بدأت منذ 15 يوماً</div>
+                                <div class="font-medium">Summer Sale 2025</div>
+                                <div class="text-sm text-slate-400">Started 15 days ago</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <div class="flex flex-wrap">
+                                    <span class="platform-badge bg-blue-900/30 text-blue-400">Google</span>
+                                    <span class="platform-badge bg-pink-900/30 text-pink-400">TikTok</span>
+                                    <span class="platform-badge bg-blue-700/30 text-blue-300">Meta</span>
+                                </div>
                             </td>
                             <td class="py-4 px-4">
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-green-900/30 text-green-400">
-                                    <span class="w-2 h-2 rounded-full bg-green-400 ml-2"></span>
-                                    نشطة
+                                    <span class="w-2 h-2 rounded-full bg-green-400 mr-2"></span>
+                                    Active
                                 </span>
                             </td>
                             <td class="py-4 px-4 font-medium">$2,850</td>
                             <td class="py-4 px-4">
                                 <div class="font-medium">1,240</div>
-                                <div class="text-sm text-slate-400">4.2% معدل تحويل</div>
+                                <div class="text-sm text-slate-400">4.2% conv. rate</div>
                             </td>
                             <td class="py-4 px-4">
                                 <div class="font-medium">4.1x</div>
-                                <div class="text-sm text-green-400">+12% عن الهدف</div>
+                                <div class="text-sm text-green-400">+12% vs target</div>
                             </td>
                             <td class="py-4 px-4">
                                 <button class="text-blue-400 hover:text-blue-300 mr-3">
@@ -456,23 +524,30 @@
                         </tr>
                         <tr class="hover:bg-slate-800/50">
                             <td class="py-4 px-4">
-                                <div class="font-medium">إطلاق المنتج الجديد</div>
-                                <div class="text-sm text-slate-400">بدأت منذ 7 أيام</div>
+                                <div class="font-medium">New Product Launch</div>
+                                <div class="text-sm text-slate-400">Started 7 days ago</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <div class="flex flex-wrap">
+                                    <span class="platform-badge bg-blue-700/30 text-blue-300">Meta</span>
+                                    <span class="platform-badge bg-yellow-900/30 text-yellow-400">Snapchat</span>
+                                    <span class="platform-badge bg-sky-900/30 text-sky-400">LinkedIn</span>
+                                </div>
                             </td>
                             <td class="py-4 px-4">
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-900/30 text-blue-400">
-                                    <span class="w-2 h-2 rounded-full bg-blue-400 ml-2"></span>
-                                    قيد المراجعة
+                                    <span class="w-2 h-2 rounded-full bg-blue-400 mr-2"></span>
+                                    In Review
                                 </span>
                             </td>
                             <td class="py-4 px-4 font-medium">$1,250</td>
                             <td class="py-4 px-4">
                                 <div class="font-medium">320</div>
-                                <div class="text-sm text-slate-400">2.8% معدل تحويل</div>
+                                <div class="text-sm text-slate-400">2.8% conv. rate</div>
                             </td>
                             <td class="py-4 px-4">
                                 <div class="font-medium">2.4x</div>
-                                <div class="text-sm text-red-400">-15% عن الهدف</div>
+                                <div class="text-sm text-red-400">-15% vs target</div>
                             </td>
                             <td class="py-4 px-4">
                                 <button class="text-blue-400 hover:text-blue-300 mr-3">
@@ -485,23 +560,31 @@
                         </tr>
                         <tr class="hover:bg-slate-800/50">
                             <td class="py-4 px-4">
-                                <div class="font-medium">عروض رمضان</div>
-                                <div class="text-sm text-slate-400">بدأت منذ 30 يوماً</div>
+                                <div class="font-medium">Holiday Promotion</div>
+                                <div class="text-sm text-slate-400">Started 30 days ago</div>
+                            </td>
+                            <td class="py-4 px-4">
+                                <div class="flex flex-wrap">
+                                    <span class="platform-badge bg-black/30 text-gray-300">X (Twitter)</span>
+                                    <span class="platform-badge bg-blue-900/30 text-blue-400">Google</span>
+                                    <span class="platform-badge bg-blue-700/30 text-blue-300">Meta</span>
+                                    <span class="platform-badge bg-pink-900/30 text-pink-400">TikTok</span>
+                                </div>
                             </td>
                             <td class="py-4 px-4">
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-amber-900/30 text-amber-400">
-                                    <span class="w-2 h-2 rounded-full bg-amber-400 ml-2"></span>
-                                    تحت التعديل
+                                    <span class="w-2 h-2 rounded-full bg-amber-400 mr-2"></span>
+                                    Optimizing
                                 </span>
                             </td>
                             <td class="py-4 px-4 font-medium">$4,200</td>
                             <td class="py-4 px-4">
                                 <div class="font-medium">2,150</div>
-                                <div class="text-sm text-slate-400">5.1% معدل تحويل</div>
+                                <div class="text-sm text-slate-400">5.1% conv. rate</div>
                             </td>
                             <td class="py-4 px-4">
                                 <div class="font-medium">4.8x</div>
-                                <div class="text-sm text-green-400">+20% عن الهدف</div>
+                                <div class="text-sm text-green-400">+20% vs target</div>
                             </td>
                             <td class="py-4 px-4">
                                 <button class="text-blue-400 hover:text-blue-300 mr-3">
@@ -517,37 +600,44 @@
             </div>
         </div>
 
-        <!-- النصائح والتوصيات -->
+        <!-- Tips and Recommendations -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- التوصيات -->
+            <!-- AI Recommendations -->
             <div class="stat-card rounded-2xl p-6">
-                <h3 class="text-lg font-bold mb-6">توصيات الذكاء الاصطناعي</h3>
+                <h3 class="text-lg font-bold mb-6">AI Recommendations</h3>
                 <div class="space-y-4">
-                    <div class="flex items-start space-x-3 space-x-reverse p-4 bg-blue-900/20 rounded-xl border border-blue-800">
-                        <i class="fas fa-lightbulb text-blue-400 mt-1"></i>
+                    <div class="flex items-start p-4 bg-blue-900/20 rounded-xl border border-blue-800">
+                        <i class="fas fa-lightbulb text-blue-400 mr-3 mt-1"></i>
                         <div>
-                            <div class="font-medium mb-1">زيادة الميزانية</div>
-                            <p class="text-sm text-slate-400">حملة "تخفيضات الصيف" تحقق ROAS ممتاز. اقتراح زيادة الميزانية بمقدار 20%</p>
+                            <div class="font-medium mb-1">Increase Budget</div>
+                            <p class="text-sm text-slate-400">"Summer Sale" campaign achieving excellent ROAS. Suggested budget increase: 20%</p>
                         </div>
                     </div>
-                    <div class="flex items-start space-x-3 space-x-reverse p-4 bg-purple-900/20 rounded-xl border border-purple-800">
-                        <i class="fas fa-adjust text-purple-400 mt-1"></i>
+                    <div class="flex items-start p-4 bg-purple-900/20 rounded-xl border border-purple-800">
+                        <i class="fas fa-adjust text-purple-400 mr-3 mt-1"></i>
                         <div>
-                            <div class="font-medium mb-1">تعديل المزايدة</div>
-                            <p class="text-sm text-slate-400">اقتراح خفض المزايدة في حملة "إطلاق المنتج" بمقدار 15% لتحسين ROAS</p>
+                            <div class="font-medium mb-1">Adjust Bidding Strategy</div>
+                            <p class="text-sm text-slate-400">Lower TikTok bids by 15% for better ROAS in "New Product Launch"</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-green-900/20 rounded-xl border border-green-800">
+                        <i class="fas fa-expand-arrows-alt text-green-400 mr-3 mt-1"></i>
+                        <div>
+                            <div class="font-medium mb-1">Expand Audience</div>
+                            <p class="text-sm text-slate-400">High-performing audience segment found. Suggested expansion: Lookalike 5%</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- الحملات القادمة -->
+            <!-- Upcoming Campaigns -->
             <div class="stat-card rounded-2xl p-6">
-                <h3 class="text-lg font-bold mb-6">الحملات المجدولة</h3>
+                <h3 class="text-lg font-bold mb-6">Scheduled Campaigns</h3>
                 <div class="space-y-4">
                     <div class="flex items-center justify-between p-4 bg-slate-800/30 rounded-xl">
                         <div>
-                            <div class="font-medium">عيد الأضحى</div>
-                            <div class="text-sm text-slate-400">تبدأ بعد 45 يوماً</div>
+                            <div class="font-medium">Spring Collection Launch</div>
+                            <div class="text-sm text-slate-400">Starts in 15 days</div>
                         </div>
                         <div class="text-amber-400">
                             <i class="fas fa-clock"></i>
@@ -555,23 +645,32 @@
                     </div>
                     <div class="flex items-center justify-between p-4 bg-slate-800/30 rounded-xl">
                         <div>
-                            <div class="font-medium">العودة للمدارس</div>
-                            <div class="text-sm text-slate-400">تبدأ بعد 60 يوماً</div>
+                            <div class="font-medium">Back to School Campaign</div>
+                            <div class="text-sm text-slate-400">Starts in 60 days</div>
                         </div>
                         <div class="text-blue-400">
                             <i class="fas fa-calendar"></i>
                         </div>
                     </div>
+                    <div class="flex items-center justify-between p-4 bg-slate-800/30 rounded-xl">
+                        <div>
+                            <div class="font-medium">Black Friday Promotion</div>
+                            <div class="text-sm text-slate-400">Starts in 120 days</div>
+                        </div>
+                        <div class="text-purple-400">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- أداء المنصة -->
+            <!-- Platform Performance -->
             <div class="stat-card rounded-2xl p-6">
-                <h3 class="text-lg font-bold mb-6">أداء المنصة</h3>
+                <h3 class="text-lg font-bold mb-6">Platform Performance</h3>
                 <div class="space-y-6">
                     <div>
                         <div class="flex justify-between text-sm mb-1">
-                            <span class="text-slate-400">استخدام API</span>
+                            <span class="text-slate-400">Google Ads API Usage</span>
                             <span class="font-medium">42%</span>
                         </div>
                         <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
@@ -580,20 +679,29 @@
                     </div>
                     <div>
                         <div class="flex justify-between text-sm mb-1">
-                            <span class="text-slate-400">مساحة التخزين</span>
-                            <span class="font-medium">1.2GB / 5GB</span>
+                            <span class="text-slate-400">Meta API Rate Limit</span>
+                            <span class="font-medium">68%</span>
                         </div>
                         <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
-                            <div class="h-full bg-green-500 rounded-full" style="width: 24%"></div>
+                            <div class="h-full bg-green-500 rounded-full" style="width: 68%"></div>
                         </div>
                     </div>
                     <div>
                         <div class="flex justify-between text-sm mb-1">
-                            <span class="text-slate-400">سرعة المعالجة</span>
-                            <span class="font-medium">ممتازة</span>
+                            <span class="text-slate-400">TikTok API Response Time</span>
+                            <span class="font-medium">Excellent</span>
                         </div>
                         <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
                             <div class="h-full bg-purple-500 rounded-full" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-slate-400">Data Storage</span>
+                            <span class="font-medium">1.2GB / 5GB</span>
+                        </div>
+                        <div class="h-2 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-amber-500 rounded-full" style="width: 24%"></div>
                         </div>
                     </div>
                 </div>
@@ -601,7 +709,7 @@
         </div>
     </main>
 
-    <!-- القائمة الجوالية -->
+    <!-- Mobile Menu -->
     <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-slate-900 z-50 lg:hidden">
         <div class="p-6">
             <div class="flex justify-between items-center mb-8">
@@ -610,36 +718,37 @@
                     <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
-            <!-- نفس قائمة الجانبية -->
+            <!-- Same sidebar content -->
         </div>
     </div>
 
-    <!-- الفوتر -->
+    <!-- Footer -->
     <footer class="border-t border-slate-800 py-8 mt-12">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-                <p>© 2025 AI-X Marketing. جميع الحقوق محفوظة.</p>
+                <p>© 2024 AI-X Marketing Platform. All rights reserved.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
-                    <a href="privacy-policy.html" class="hover:text-white transition">سياسة الخصوصية</a>
-                    <a href="terms-of-service.html" class="hover:text-white transition">شروط الخدمة</a>
-                    <a href="contact.html" class="hover:text-white transition">اتصل بنا</a>
+                    <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="terms-of-service.html" class="hover:text-white transition">Terms of Service</a>
+                    <a href="platform-compliance.html" class="hover:text-white transition">Platform Compliance</a>
+                    <a href="contact.html" class="hover:text-white transition">Contact Us</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- مكتبة الرسوم البيانية -->
+    <!-- Charts Library -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <!-- JavaScript -->
     <script>
-        // إدارة القوائم المنسدلة
+        // Dropdown management
         document.getElementById('notificationsBtn').addEventListener('click', function(e) {
             e.stopPropagation();
             const menu = document.getElementById('notificationsMenu');
             menu.classList.toggle('hidden');
             
-            // إخفاء القائمة الأخرى
+            // Hide other menu
             document.getElementById('userMenu').classList.add('hidden');
         });
 
@@ -648,17 +757,17 @@
             const menu = document.getElementById('userMenu');
             menu.classList.toggle('hidden');
             
-            // إخفاء القائمة الأخرى
+            // Hide other menu
             document.getElementById('notificationsMenu').classList.add('hidden');
         });
 
-        // إغلاق القوائم عند النقر خارجها
+        // Close dropdowns when clicking outside
         document.addEventListener('click', function() {
             document.getElementById('notificationsMenu').classList.add('hidden');
             document.getElementById('userMenu').classList.add('hidden');
         });
 
-        // منع إغلاق القوائم عند النقر داخلها
+        // Prevent dropdown from closing when clicking inside
         document.getElementById('notificationsMenu').addEventListener('click', function(e) {
             e.stopPropagation();
         });
@@ -667,7 +776,7 @@
             e.stopPropagation();
         });
 
-        // القائمة الجوالية
+        // Mobile menu
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('mobileMenu').classList.add('open');
         });
@@ -676,21 +785,21 @@
             document.getElementById('mobileMenu').classList.remove('open');
         });
 
-        // الرسوم البيانية
+        // Charts
         document.addEventListener('DOMContentLoaded', function() {
-            // الرسم البياني 1: الأداء الأسبوعي
+            // Chart 1: Weekly Performance
             var options1 = {
                 series: [{
-                    name: 'الإنفاق',
+                    name: 'Spend',
                     data: [3100, 4200, 3800, 5100, 4900, 6200, 5500]
                 }, {
-                    name: 'الإيرادات',
+                    name: 'Revenue',
                     data: [9800, 12200, 11400, 15800, 15200, 18600, 16500]
                 }],
                 chart: {
                     type: 'area',
                     height: 350,
-                    fontFamily: 'Tajawal',
+                    fontFamily: 'Inter',
                     toolbar: {
                         show: false
                     },
@@ -715,7 +824,7 @@
                     }
                 },
                 xaxis: {
-                    categories: ['السبت', 'الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'],
+                    categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                     labels: {
                         style: {
                             colors: '#64748b'
@@ -756,18 +865,18 @@
             var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
             chart1.render();
 
-            // الرسم البياني 2: توزيع الميزانية
+            // Chart 2: Budget Distribution
             var options2 = {
-                series: [44, 55, 13, 43, 22],
+                series: [35, 25, 15, 12, 8, 5],
                 chart: {
                     type: 'donut',
                     height: 350,
-                    fontFamily: 'Tajawal',
+                    fontFamily: 'Inter',
                     background: 'transparent',
                     foreColor: '#94a3b8'
                 },
-                colors: ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ef4444'],
-                labels: ['تيك توك', 'إنستغرام', 'سناب شات', 'تويتر', 'أخرى'],
+                colors: ['#3b82f6', '#ec4899', '#0ea5e9', '#f59e0b', '#000000', '#6366f1'],
+                labels: ['Google Ads', 'TikTok Ads', 'Meta Ads', 'Snapchat', 'X (Twitter)', 'LinkedIn'],
                 legend: {
                     position: 'bottom',
                     horizontalAlign: 'center',
@@ -783,7 +892,7 @@
                                 show: true,
                                 total: {
                                     show: true,
-                                    label: 'إجمالي الإنفاق',
+                                    label: 'Total Budget',
                                     color: '#cbd5e1',
                                     formatter: function (w) {
                                         return '$12,450'
@@ -819,9 +928,9 @@
             chart2.render();
         });
 
-        // تحديث البيانات الوهمية
+        // Update mock data
         function updateMockData() {
-            // تحديث بطاقات الإحصائيات
+            // Update statistics cards
             const statCards = document.querySelectorAll('.stat-card');
             statCards.forEach((card, index) => {
                 const numbers = card.querySelectorAll('.text-2xl');
@@ -851,25 +960,26 @@
             });
         }
 
-        // تحديث البيانات كل 30 ثانية (محاكاة للتحديث الحي)
+        // Update data every 30 seconds (simulating live updates)
         setInterval(updateMockData, 30000);
 
-        // محاكاة التحديثات في الوقت الحقيقي
+        // Simulate real-time updates
         function simulateRealTimeUpdates() {
             const notifications = [
-                'حملة جديدة بدأت العمل',
-                'تم تحقيق هدف ROAS في حملة "تخفيضات الصيف"',
-                'توصية جديدة من الذكاء الاصطناعي',
-                'تم تحديث تقرير الأداء الشهري'
+                'New campaign started',
+                'ROAS target achieved in "Summer Sale"',
+                'New AI recommendation available',
+                'Monthly performance report updated',
+                'Platform API connection optimized'
             ];
             
             const randomNotif = notifications[Math.floor(Math.random() * notifications.length)];
-            console.log('تحديث جديد:', randomNotif);
+            console.log('New update:', randomNotif);
             
-            // هنا يمكنك إضافة التحديثات إلى قائمة الإشعارات
+            // Here you can add updates to notifications list
         }
 
-        // تحديث كل دقيقة (محاكاة)
+        // Update every minute (simulation)
         setInterval(simulateRealTimeUpdates, 60000);
     </script>
 

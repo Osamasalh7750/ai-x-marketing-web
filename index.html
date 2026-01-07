@@ -1,198 +1,512 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-X Marketing | حلول التسويق الذكية</title>
+    <title>AI-X Marketing | Multi-Platform AI Advertising Solutions</title>
+    <meta name="description" content="AI-powered marketing platform for automating and optimizing ad campaigns across Google, TikTok, Meta, Snapchat, LinkedIn, and X">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Tajawal', sans-serif; }
-        .gradient-text { background: linear-gradient(90deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0f172a;
+            color: #fff;
+        }
+        .gradient-text { 
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .card-hover { 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .card-hover:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+        .platform-item {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .platform-item:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+        }
+        .platform-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .google-icon { color: #4285F4; }
+        .tiktok-icon { color: #000000; }
+        .meta-icon { color: #1877F2; }
+        .snapchat-icon { color: #FFFC00; }
+        .linkedin-icon { color: #0A66C2; }
+        .twitter-icon { color: #1DA1F2; }
     </style>
 </head>
 <body class="bg-slate-950 text-white">
 
-    <!-- شريط التنقل -->
+    <!-- Navigation Bar -->
     <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <div class="text-2xl font-bold gradient-text">AI-X Marketing</div>
-        <div class="flex items-center space-x-4 space-x-reverse">
-            <a href="#features" class="text-slate-300 hover:text-white px-3 py-2">المميزات</a>
-            <a href="#pricing" class="text-slate-300 hover:text-white px-3 py-2">الأسعار</a>
-            <a href="contact.html" class="text-slate-300 hover:text-white px-3 py-2">اتصل بنا</a>
-            <a href="login.html" class="bg-gradient-to-r from-blue-600 to-purple-600 px-5 py-2 rounded-lg hover:opacity-90 transition font-bold">دخول المستخدم</a>
+        <div class="text-2xl font-bold gradient-text">AI-X Marketing Platform</div>
+        <div class="flex items-center space-x-4">
+            <a href="#features" class="text-slate-300 hover:text-white px-3 py-2">Features</a>
+            <a href="#pricing" class="text-slate-300 hover:text-white px-3 py-2">Pricing</a>
+            <a href="#platforms" class="text-slate-300 hover:text-white px-3 py-2">Platforms</a>
+            <a href="contact.html" class="text-slate-300 hover:text-white px-3 py-2">Contact</a>
+            <a href="login.html" class="gradient-bg px-5 py-2 rounded-lg hover:opacity-90 transition font-bold shadow-lg shadow-blue-500/20">
+                User Login
+            </a>
         </div>
     </nav>
 
-    <!-- قسم الهيرو -->
+    <!-- Hero Section -->
     <section class="flex flex-col items-center justify-center py-24 px-4 text-center">
         <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-            <span class="block">أتمتة إعلانات تيك توك</span>
-            <span class="gradient-text">بالذكاء الاصطناعي</span>
+            <span class="block">Multi-Platform Advertising</span>
+            <span class="gradient-text">Powered by AI</span>
         </h1>
         <p class="text-xl text-slate-400 max-w-3xl mb-10">
-            منصة AI-X Marketing الرائدة لتحليل البيانات الضخمة وأتمتة الحملات الإعلانية. نحن نساعد الشركات على زيادة مبيعاتها من خلال تحسين الإنفاق الإعلاني لحظياً باستخدام خوارزميات الذكاء الاصطناعي المتقدمة.
+            The leading AI-X Marketing Platform for data analysis and campaign automation across all major advertising platforms. 
+            We help businesses increase sales by optimizing ad spend in real-time using advanced AI algorithms.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 mt-8">
-            <a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-xl text-lg font-bold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition">ابدأ الفترة التجريبية</a>
-            <button onclick="window.location.href='#features'" class="border border-slate-700 px-8 py-4 rounded-xl text-lg font-bold hover:bg-slate-900 transition">استكشاف المميزات</button>
+        
+        <!-- Platform Logos -->
+        <div class="platform-grid max-w-4xl">
+            <div class="platform-item">
+                <div class="platform-icon google-icon">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="font-medium">Google Ads</div>
+            </div>
+            <div class="platform-item">
+                <div class="platform-icon tiktok-icon">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <div class="font-medium">TikTok Ads</div>
+            </div>
+            <div class="platform-item">
+                <div class="platform-icon meta-icon">
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <div class="font-medium">Meta Ads</div>
+            </div>
+            <div class="platform-item">
+                <div class="platform-icon snapchat-icon">
+                    <i class="fab fa-snapchat"></i>
+                </div>
+                <div class="font-medium">Snapchat</div>
+            </div>
+            <div class="platform-item">
+                <div class="platform-icon linkedin-icon">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+                <div class="font-medium">LinkedIn</div>
+            </div>
+            <div class="platform-item">
+                <div class="platform-icon twitter-icon">
+                    <i class="fab fa-twitter"></i>
+                </div>
+                <div class="font-medium">X (Twitter)</div>
+            </div>
         </div>
-        <div class="mt-16 relative">
+
+        <div class="flex flex-col sm:flex-row gap-4 mt-12">
+            <a href="#contact" class="gradient-bg px-8 py-4 rounded-xl text-lg font-bold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition">
+                Start Free Trial
+            </a>
+            <button onclick="window.location.href='#features'" class="border border-slate-700 px-8 py-4 rounded-xl text-lg font-bold hover:bg-slate-900 transition">
+                Explore Features
+            </button>
+        </div>
+        
+        <div class="mt-20 relative">
             <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-20"></div>
             <div class="relative bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 max-w-6xl">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     <div>
                         <div class="text-3xl font-bold text-blue-400">+40%</div>
-                        <div class="text-slate-400">معدل التحويل</div>
+                        <div class="text-slate-400">Average ROAS Increase</div>
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-blue-400">-30%</div>
-                        <div class="text-slate-400">تكلفة التحويل</div>
+                        <div class="text-slate-400">Cost Per Acquisition</div>
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-blue-400">24/7</div>
-                        <div class="text-slate-400">مراقبة مستمرة</div>
+                        <div class="text-slate-400">Real-time Monitoring</div>
                     </div>
                     <div>
                         <div class="text-3xl font-bold text-blue-400">500+</div>
-                        <div class="text-slate-400">عميل راضٍ</div>
+                        <div class="text-slate-400">Satisfied Clients</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم المميزات -->
+    <!-- Features Section -->
     <section id="features" class="max-w-7xl mx-auto py-20 px-4">
-        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">مميزات المنصة</h2>
-        <div class="grid md:grid-cols-3 gap-8 text-right">
+        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Platform Features</h2>
+        <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 card-hover">
-                <div class="text-blue-500 text-4xl mb-4"><i class="fas fa-rocket"></i></div>
-                <h3 class="text-xl font-bold mb-3">أتمتة النشر</h3>
-                <p class="text-slate-400">انشر حملاتك مباشرة من منصتنا بضغطة زر واحدة باستخدام إعدادات مُحسنة تلقائياً لتحقيق أقصى عائد على الإنفاق.</p>
+                <div class="text-blue-500 text-4xl mb-4">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Multi-Platform Automation</h3>
+                <p class="text-slate-400">
+                    Deploy campaigns across all platforms with one click using automatically optimized settings to maximize ROAS. 
+                    Unified campaign management for Google, TikTok, Meta, and more.
+                </p>
             </div>
             <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 card-hover">
-                <div class="text-blue-500 text-4xl mb-4"><i class="fas fa-chart-line"></i></div>
-                <h3 class="text-xl font-bold mb-3">تقارير متقدمة</h3>
-                <p class="text-slate-400">لوحة تحكم ذكية تجمع بيانات ROAS و CPA و CTR من تيك توك لتعطيك رؤية شاملة لأدائك في الوقت الحقيقي.</p>
+                <div class="text-blue-500 text-4xl mb-4">
+                    <i class="fas fa-chart-network"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Cross-Platform Analytics</h3>
+                <p class="text-slate-400">
+                    Intelligent dashboard aggregating ROAS, CPA, and CTR data from all connected platforms. 
+                    Get comprehensive performance insights with unified reporting.
+                </p>
             </div>
             <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 card-hover">
-                <div class="text-blue-500 text-4xl mb-4"><i class="fas fa-brain"></i></div>
-                <h3 class="text-xl font-bold mb-3">تحسين ذكي</h3>
-                <p class="text-slate-400">خوارزميات الذكاء الاصطناعي تقوم بتعديل المزايدات والميزانيات والإعلانات لضمان أفضل النتائج بشكل تلقائي.</p>
+                <div class="text-blue-500 text-4xl mb-4">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">AI-Powered Optimization</h3>
+                <p class="text-slate-400">
+                    Advanced AI algorithms automatically adjust bids, budgets, and creatives across all platforms 
+                    to ensure optimal performance and maximum efficiency.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Additional Features -->
+        <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 card-hover">
+                <div class="text-purple-500 text-4xl mb-4">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Compliance & Security</h3>
+                <p class="text-slate-400">
+                    Full compliance with platform policies and regulations. Enterprise-grade security with 
+                    encrypted API connections and data protection.
+                </p>
+            </div>
+            <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 card-hover">
+                <div class="text-green-500 text-4xl mb-4">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Real-time Synchronization</h3>
+                <p class="text-slate-400">
+                    Instant data sync across all connected platforms. Monitor performance changes and 
+                    make adjustments in real-time from a single interface.
+                </p>
+            </div>
+            <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 card-hover">
+                <div class="text-amber-500 text-4xl mb-4">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Team Collaboration</h3>
+                <p class="text-slate-400">
+                    Multi-user access with role-based permissions. Collaborate seamlessly with your team 
+                    on campaign strategy and execution.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- قسم التسعير -->
+    <!-- Platforms Section -->
+    <section id="platforms" class="max-w-7xl mx-auto py-20 px-4">
+        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Supported Platforms</h2>
+        <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="google-icon text-2xl mr-3">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Google Ads</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        Full Google Ads API integration including Search, Display, YouTube, and Shopping campaigns. 
+                        Advanced bid strategies and performance tracking.
+                    </p>
+                </div>
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="tiktok-icon text-2xl mr-3">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">TikTok Ads</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        Complete TikTok Advertising API access for creative management, audience targeting, 
+                        and campaign optimization with AI-driven insights.
+                    </p>
+                </div>
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="meta-icon text-2xl mr-3">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Meta Business Suite</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        Meta Business API integration for Facebook and Instagram campaigns. Advanced audience 
+                        building, creative testing, and performance analytics.
+                    </p>
+                </div>
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="snapchat-icon text-2xl mr-3">
+                            <i class="fab fa-snapchat"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Snapchat Ads</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        Snapchat Ads API implementation for AR lenses, filters, and story ads. Advanced 
+                        demographic targeting and engagement optimization.
+                    </p>
+                </div>
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="linkedin-icon text-2xl mr-3">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">LinkedIn Ads</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        LinkedIn Marketing Solutions API for B2B targeting, lead generation, and professional 
+                        audience engagement campaigns.
+                    </p>
+                </div>
+                <div class="p-6 rounded-xl bg-slate-800/50 border border-slate-700">
+                    <div class="flex items-center mb-4">
+                        <div class="twitter-icon text-2xl mr-3">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">X (Twitter) Ads</h3>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        X Ads API for promoted tweets, trends, and account targeting. Real-time conversation 
+                        monitoring and engagement optimization.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
     <section id="pricing" class="max-w-7xl mx-auto py-20 px-4">
-        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">خطط التسعير</h2>
+        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Pricing Plans</h2>
         <div class="grid md:grid-cols-3 gap-8">
             <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 text-center">
-                <h3 class="text-2xl font-bold mb-4">الخطة الأساسية</h3>
-                <div class="text-4xl font-bold mb-6">$99<span class="text-slate-400 text-lg">/شهر</span></div>
+                <h3 class="text-2xl font-bold mb-4">Starter Plan</h3>
+                <div class="text-4xl font-bold mb-6">$99<span class="text-slate-400 text-lg">/month</span></div>
                 <ul class="text-slate-300 mb-8 space-y-3">
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> حتى 5 حملات</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> تقارير أساسية</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> دعم عبر البريد</li>
-                    <li><i class="fas fa-times text-red-500 mr-2"></i> أتمتة متقدمة</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Up to 10 campaigns</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> 3 Platform integrations</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Basic reporting</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Email support</li>
+                    <li><i class="fas fa-times text-red-500 mr-2"></i> Advanced automation</li>
+                    <li><i class="fas fa-times text-red-500 mr-2"></i> API access</li>
                 </ul>
-                <button class="w-full border border-blue-500 text-blue-500 py-3 rounded-lg hover:bg-blue-900 transition">اختيار الخطة</button>
+                <button class="w-full border border-blue-500 text-blue-500 py-3 rounded-lg hover:bg-blue-900 transition font-medium">
+                    Choose Plan
+                </button>
             </div>
             <div class="bg-gradient-to-b from-blue-900/30 to-purple-900/30 p-8 rounded-2xl border border-blue-500 text-center relative card-hover">
-                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-sm">الأكثر شيوعاً</div>
-                <h3 class="text-2xl font-bold mb-4">الخطة المتقدمة</h3>
-                <div class="text-4xl font-bold mb-6">$299<span class="text-slate-300 text-lg">/شهر</span></div>
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 gradient-bg text-white px-4 py-1 rounded-full text-sm font-medium">
+                    Most Popular
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Professional Plan</h3>
+                <div class="text-4xl font-bold mb-6">$299<span class="text-white text-lg">/month</span></div>
                 <ul class="text-white mb-8 space-y-3">
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> حتى 20 حملة</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> تقارير متقدمة</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> أتمتة كاملة</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> دعم فني 24/7</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Up to 50 campaigns</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> All platform integrations</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Advanced analytics</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Full automation</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> API access</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Priority support</li>
                 </ul>
-                <button class="w-full bg-gradient-to-r from-blue-500 to-purple-600 py-3 rounded-lg font-bold hover:opacity-90 transition">اختيار الخطة</button>
+                <button class="w-full gradient-bg py-3 rounded-lg font-bold hover:opacity-90 transition shadow-lg shadow-blue-500/20">
+                    Choose Plan
+                </button>
             </div>
             <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 text-center">
-                <h3 class="text-2xl font-bold mb-4">خطة المؤسسات</h3>
-                <div class="text-4xl font-bold mb-6">$899<span class="text-slate-400 text-lg">/شهر</span></div>
+                <h3 class="text-2xl font-bold mb-4">Enterprise Plan</h3>
+                <div class="text-4xl font-bold mb-6">Custom<span class="text-slate-400 text-lg">/month</span></div>
                 <ul class="text-slate-300 mb-8 space-y-3">
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> حملات غير محدودة</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> تقارير مخصصة</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> تكامل API مخصص</li>
-                    <li><i class="fas fa-check text-green-500 mr-2"></i> مدير حسابات مخصص</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Unlimited campaigns</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> All platform integrations</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Custom reporting</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Dedicated API support</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> White-label solutions</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> 24/7 dedicated support</li>
                 </ul>
-                <button class="w-full border border-blue-500 text-blue-500 py-3 rounded-lg hover:bg-blue-900 transition">اتصل بنا</button>
+                <button onclick="window.location.href='#contact'" class="w-full border border-blue-500 text-blue-500 py-3 rounded-lg hover:bg-blue-900 transition font-medium">
+                    Contact Sales
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- نموذج الاتصال -->
+    <!-- Contact Form Section -->
     <section id="contact" class="max-w-4xl mx-auto py-20 px-4">
-        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">ابدأ رحلتك معنا</h2>
+        <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Start Your Journey With Us</h2>
         <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800">
             <form id="contactForm" class="space-y-6">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-slate-300 mb-2">الاسم الكامل</label>
+                        <label class="block text-slate-300 mb-2">Full Name</label>
                         <input type="text" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                     </div>
                     <div>
-                        <label class="block text-slate-300 mb-2">البريد الإلكتروني</label>
+                        <label class="block text-slate-300 mb-2">Email Address</label>
                         <input type="email" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-slate-300 mb-2">اسم الشركة</label>
+                    <label class="block text-slate-300 mb-2">Company Name</label>
                     <input type="text" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                 </div>
                 <div>
-                    <label class="block text-slate-300 mb-2">الرسالة</label>
-                    <textarea class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 h-32 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="أخبرنا عن احتياجاتك التسويقية..."></textarea>
+                    <label class="block text-slate-300 mb-2">Business Type</label>
+                    <select class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select business type</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="saas">SaaS</option>
+                        <option value="agency">Marketing Agency</option>
+                        <option value="enterprise">Enterprise</option>
+                        <option value="startup">Startup</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 py-4 rounded-lg font-bold text-lg hover:opacity-90 transition">إرسال الطلب</button>
+                <div>
+                    <label class="block text-slate-300 mb-2">Platforms of Interest</label>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-slate-700 bg-slate-800 text-blue-500 mr-2">
+                            <span class="text-slate-400">Google Ads</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-slate-700 bg-slate-800 text-blue-500 mr-2">
+                            <span class="text-slate-400">TikTok Ads</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-slate-700 bg-slate-800 text-blue-500 mr-2">
+                            <span class="text-slate-400">Meta Ads</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-slate-700 bg-slate-800 text-blue-500 mr-2">
+                            <span class="text-slate-400">Snapchat</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-slate-700 bg-slate-800 text-blue-500 mr-2">
+                            <span class="text-slate-400">LinkedIn</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded border-slate-700 bg-slate-800 text-blue-500 mr-2">
+                            <span class="text-slate-400">X (Twitter)</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-slate-300 mb-2">Message</label>
+                    <textarea class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 h-32 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tell us about your marketing needs and goals..."></textarea>
+                </div>
+                <div class="flex items-start">
+                    <input type="checkbox" id="privacyConsent" required class="mt-1 mr-3 rounded border-slate-700 bg-slate-800 text-blue-500">
+                    <label for="privacyConsent" class="text-slate-400 text-sm">
+                        I agree to the <a href="privacy-policy.html" class="text-blue-400 hover:text-blue-300">Privacy Policy</a> and 
+                        <a href="terms-of-service.html" class="text-blue-400 hover:text-blue-300">Terms of Service</a>. I understand that 
+                        my data will be processed in accordance with platform policies and regulations.
+                    </label>
+                </div>
+                <button type="submit" class="w-full gradient-bg py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-lg shadow-blue-500/20">
+                    Submit Request
+                </button>
             </form>
         </div>
     </section>
 
-    <!-- الفوتر -->
+    <!-- Footer -->
     <footer class="border-t border-slate-800 py-12 mt-20">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-8 md:mb-0">
-                    <div class="text-2xl font-bold gradient-text mb-4">AI-X Marketing</div>
-                    <p class="text-slate-500 max-w-md">منصة رائدة في تحليل وأتمتة الحملات الإعلانية على تيك توك باستخدام الذكاء الاصطناعي لتحقيق أقصى عائد على الاستثمار.</p>
+            <div class="flex flex-col md:flex-row justify-between items-start">
+                <div class="mb-8 md:mb-0 md:w-1/3">
+                    <div class="text-2xl font-bold gradient-text mb-4">AI-X Marketing Platform</div>
+                    <p class="text-slate-500">
+                        Leading AI-powered marketing platform for automating and optimizing ad campaigns 
+                        across all major advertising platforms. Achieve maximum ROI with intelligent automation.
+                    </p>
                 </div>
-                <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex flex-col md:flex-row gap-8 md:w-2/3">
                     <div>
-                        <h4 class="font-bold text-lg mb-4">روابط سريعة</h4>
+                        <h4 class="font-bold text-lg mb-4">Quick Links</h4>
                         <ul class="space-y-2 text-slate-500">
-                            <li><a href="#features" class="hover:text-white transition">المميزات</a></li>
-                            <li><a href="#pricing" class="hover:text-white transition">الأسعار</a></li>
-                            <li><a href="#contact" class="hover:text-white transition">اتصل بنا</a></li>
+                            <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                            <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                            <li><a href="#platforms" class="hover:text-white transition">Platforms</a></li>
+                            <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="font-bold text-lg mb-4">الموارد القانونية</h4>
+                        <h4 class="font-bold text-lg mb-4">Legal Resources</h4>
                         <ul class="space-y-2 text-slate-500">
-                            <li><a href="privacy-policy.html" class="hover:text-white transition">سياسة الخصوصية</a></li>
-                            <li><a href="terms-of-service.html" class="hover:text-white transition">شروط الخدمة</a></li>
-                            <li><a href="#contact" class="hover:text-white transition">اتفاقية المستخدم</a></li>
+                            <li><a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html" class="hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="platform-compliance.html" class="hover:text-white transition">Platform Compliance</a></li>
+                            <li><a href="data-processing-agreement.html" class="hover:text-white transition">DPA</a></li>
                         </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Contact Info</h4>
+                        <ul class="space-y-2 text-slate-500">
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope mr-2 text-blue-400"></i>
+                                <a href="mailto:support@ai-x-marketing.com" class="hover:text-white transition">
+                                    support@ai-x-marketing.com
+                                </a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-globe mr-2 text-blue-400"></i>
+                                <span>Global Platform</span>
+                            </li>
+                        </ul>
+                        <div class="flex space-x-4 mt-4">
+                            <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-slate-500 hover:text-white transition"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-                <p>© 2025 AI-X Marketing. جميع الحقوق محفوظة.</p>
+                <p>© 2024 AI-X Marketing Platform. All rights reserved.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
-                    <a href="mailto:osamah@ai-x-marketing.com" class="hover:text-white transition"><i class="fas fa-envelope mr-2"></i>osamah@ai-x-marketing.com</a>
-                    <div class="flex space-x-4 space-x-reverse">
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <a href="contact.html" class="hover:text-white transition">Contact Support</a>
+                    <a href="status.html" class="hover:text-white transition">System Status</a>
+                    <a href="documentation.html" class="hover:text-white transition">API Docs</a>
                 </div>
             </div>
         </div>
@@ -201,7 +515,7 @@
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('شكراً لتواصلك معنا! سنقوم بالرد عليك خلال 24 ساعة.');
+            alert('Thank you for your interest! Our team will contact you within 24 hours.');
             this.reset();
         });
     </script>

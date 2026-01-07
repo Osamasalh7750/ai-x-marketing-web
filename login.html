@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - AI-X Marketing</title>
+    <title>Login - AI-X Marketing Platform</title>
+    <meta name="description" content="Login to your AI-X Marketing Platform account to manage multi-platform advertising campaigns">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { 
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             min-height: 100vh;
+            color: #fff;
         }
         .gradient-text { 
             background: linear-gradient(90deg, #3b82f6, #8b5cf6); 
@@ -76,40 +78,47 @@
         .password-toggle:hover {
             color: #3b82f6;
         }
+        .feature-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+        }
     </style>
 </head>
 <body class="text-white">
 
-    <!-- شريط التنقل العلوي -->
+    <!-- Top Navigation Bar -->
     <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
         <a href="/" class="text-2xl font-bold gradient-text flex items-center">
-            <i class="fas fa-rocket mr-2"></i>AI-X Marketing
+            <i class="fas fa-rocket mr-2"></i>AI-X Marketing Platform
         </a>
-        <div class="flex items-center space-x-4 space-x-reverse">
-            <span class="text-slate-400 hidden md:inline">ليس لديك حساب؟</span>
-            <a href="register.html" class="border border-blue-500 text-blue-500 hover:bg-blue-900 px-5 py-2 rounded-lg transition duration-200">إنشاء حساب</a>
+        <div class="flex items-center space-x-4">
+            <span class="text-slate-400 hidden md:inline">Don't have an account?</span>
+            <a href="register.html" class="border border-blue-500 text-blue-500 hover:bg-blue-900 px-5 py-2 rounded-lg transition duration-200 font-medium">
+                Create Account
+            </a>
         </div>
     </nav>
 
     <div class="flex flex-col lg:flex-row min-h-[calc(100vh-88px)] max-w-7xl mx-auto p-4">
         
-        <!-- الجانب الأيسر: نموذج تسجيل الدخول -->
+        <!-- Left Side: Login Form -->
         <div class="lg:w-1/2 p-8 flex items-center justify-center">
             <div class="w-full max-w-md">
                 <div class="text-center mb-10">
-                    <h1 class="text-3xl font-bold mb-2">مرحباً بعودتك 👋</h1>
-                    <p class="text-slate-400">سجل الدخول للمتابعة في منصتك الإعلانية</p>
+                    <h1 class="text-3xl font-bold mb-2">Welcome Back 👋</h1>
+                    <p class="text-slate-400">Sign in to continue to your advertising platform</p>
                 </div>
 
-                <!-- نموذج تسجيل الدخول -->
+                <!-- Login Form -->
                 <form id="loginForm" class="space-y-6">
-                    <!-- البريد الإلكتروني -->
+                    <!-- Email Address -->
                     <div>
-                        <label class="block text-slate-300 mb-2 text-right font-medium">
-                            البريد الإلكتروني
+                        <label class="block text-slate-300 mb-2 font-medium">
+                            Email Address
                         </label>
                         <div class="relative">
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="fas fa-envelope text-slate-500"></i>
                             </div>
                             <input 
@@ -117,24 +126,23 @@
                                 id="email" 
                                 name="email"
                                 required
-                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-4 pr-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-4 pl-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 input-focus"
                                 placeholder="example@domain.com"
-                                dir="ltr"
                             >
                         </div>
-                        <div id="emailError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                        <div id="emailError" class="text-red-500 text-sm mt-1 hidden"></div>
                     </div>
 
-                    <!-- كلمة المرور -->
+                    <!-- Password -->
                     <div>
                         <div class="flex justify-between items-center mb-2">
-                            <label class="text-slate-300 font-medium">كلمة المرور</label>
+                            <label class="text-slate-300 font-medium">Password</label>
                             <a href="forgot-password.html" class="text-blue-400 hover:text-blue-300 text-sm transition duration-200">
-                                نسيت كلمة المرور؟
+                                Forgot Password?
                             </a>
                         </div>
                         <div class="relative">
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <i class="fas fa-lock text-slate-500"></i>
                             </div>
                             <input 
@@ -142,22 +150,21 @@
                                 id="password" 
                                 name="password"
                                 required
-                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-4 pr-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-4 pl-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200 input-focus"
                                 placeholder="••••••••"
-                                dir="ltr"
                             >
                             <button 
                                 type="button" 
                                 id="togglePassword"
-                                class="absolute inset-y-0 left-0 flex items-center pl-3 password-toggle"
+                                class="absolute inset-y-0 right-0 flex items-center pr-3 password-toggle"
                             >
                                 <i class="fas fa-eye text-slate-500"></i>
                             </button>
                         </div>
-                        <div id="passwordError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                        <div id="passwordError" class="text-red-500 text-sm mt-1 hidden"></div>
                     </div>
 
-                    <!-- تذكرني -->
+                    <!-- Remember Me & Security -->
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input 
@@ -166,155 +173,210 @@
                                 name="remember"
                                 class="w-4 h-4 rounded border-slate-700 bg-slate-800 text-blue-500 focus:ring-blue-500 focus:ring-1"
                             >
-                            <label for="remember" class="mr-2 text-slate-300 cursor-pointer">
-                                تذكر دخولي
+                            <label for="remember" class="ml-2 text-slate-300 cursor-pointer">
+                                Remember me
                             </label>
                         </div>
                         <div class="flex items-center">
-                            <span class="mr-2 text-slate-300">الوضع الداكن</span>
+                            <span class="mr-2 text-slate-300">2FA</span>
                             <label class="switch">
-                                <input type="checkbox" id="darkModeToggle" checked>
+                                <input type="checkbox" id="twoFactorToggle">
                                 <span class="slider"></span>
                             </label>
                         </div>
                     </div>
 
-                    <!-- زر تسجيل الدخول -->
+                    <!-- Privacy Consent -->
+                    <div class="flex items-start">
+                        <input 
+                            type="checkbox" 
+                            id="privacyConsent"
+                            name="privacyConsent"
+                            required
+                            class="mt-1 mr-3 rounded border-slate-700 bg-slate-800 text-blue-500 focus:ring-blue-500"
+                        >
+                        <label for="privacyConsent" class="text-slate-400 text-sm">
+                            I agree to the <a href="privacy-policy.html" class="text-blue-400 hover:text-blue-300">Privacy Policy</a> 
+                            and <a href="terms-of-service.html" class="text-blue-400 hover:text-blue-300">Terms of Service</a>
+                        </label>
+                    </div>
+                    <div id="consentError" class="text-red-500 text-sm hidden"></div>
+
+                    <!-- Login Button -->
                     <button 
                         type="submit" 
                         id="submitBtn"
                         class="w-full gradient-bg text-white font-bold py-4 px-4 rounded-xl hover:opacity-90 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
                     >
-                        <span id="btnText">تسجيل الدخول</span>
+                        <span id="btnText">Sign In</span>
                         <span id="btnLoading" class="hidden">
-                            <i class="fas fa-spinner fa-spin ml-2"></i>جاري التحقق...
+                            <i class="fas fa-spinner fa-spin mr-2"></i>Verifying...
                         </span>
                     </button>
 
-                    <!-- تسجيل الدخول بواسطة -->
+                    <!-- Social Login Divider -->
                     <div class="relative my-8">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-slate-700"></div>
                         </div>
                         <div class="relative flex justify-center text-sm">
-                            <span class="px-4 bg-slate-900 text-slate-400">أو سجل الدخول بواسطة</span>
+                            <span class="px-4 bg-slate-900 text-slate-400">Or continue with</span>
                         </div>
                     </div>
 
-                    <!-- أزرار وسائل التواصل الاجتماعي -->
+                    <!-- Social Login Buttons -->
                     <div class="grid grid-cols-2 gap-4">
                         <button 
                             type="button"
-                            class="flex items-center justify-center space-x-2 space-x-reverse bg-slate-800 hover:bg-slate-700 border border-slate-700 py-3 rounded-xl transition duration-200"
+                            onclick="handleSocialLogin('google')"
+                            class="flex items-center justify-center space-x-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 py-3 rounded-xl transition duration-200"
                         >
                             <i class="fab fa-google text-red-400"></i>
                             <span>Google</span>
                         </button>
                         <button 
                             type="button"
-                            class="flex items-center justify-center space-x-2 space-x-reverse bg-slate-800 hover:bg-slate-700 border border-slate-700 py-3 rounded-xl transition duration-200"
+                            onclick="handleSocialLogin('github')"
+                            class="flex items-center justify-center space-x-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 py-3 rounded-xl transition duration-200"
                         >
-                            <i class="fab fa-apple text-slate-300"></i>
-                            <span>Apple</span>
+                            <i class="fab fa-github text-slate-300"></i>
+                            <span>GitHub</span>
                         </button>
+                    </div>
+
+                    <!-- API Login Option -->
+                    <div class="mt-6 text-center">
+                        <a href="api-login.html" class="text-blue-400 hover:text-blue-300 text-sm inline-flex items-center">
+                            <i class="fas fa-key mr-2"></i>
+                            Login with API Key
+                        </a>
                     </div>
                 </form>
 
-                <!-- رابط إنشاء حساب -->
+                <!-- Create Account Link -->
                 <div class="text-center mt-8">
                     <p class="text-slate-400">
-                        ليس لديك حساب؟ 
+                        Don't have an account? 
                         <a href="register.html" class="text-blue-400 hover:text-blue-300 font-medium transition duration-200">
-                            إنشاء حساب جديد
+                            Create new account
                         </a>
+                    </p>
+                    <p class="text-slate-400 text-sm mt-2">
+                        For business inquiries, 
+                        <a href="contact.html" class="text-blue-400 hover:text-blue-300">contact our sales team</a>
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- الجانب الأيمن: معلومات إضافية -->
+        <!-- Right Side: Platform Information -->
         <div class="lg:w-1/2 p-8 hidden lg:flex flex-col justify-center">
             <div class="relative max-w-lg mx-auto">
-                <!-- رسوم متحركة أو صورة -->
+                <!-- Animated Graphic -->
                 <div class="relative mb-12">
                     <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl"></div>
-                    <div class="relative bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-sm">
+                    <div class="relative feature-card rounded-2xl p-8">
                         <div class="text-6xl mb-6 text-center gradient-text">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-chart-network"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 text-center">حملات إعلانية أكثر ذكاءً</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Smarter Multi-Platform Campaigns</h3>
                         <p class="text-slate-400 text-center">
-                            أدخل إلى لوحة التحكم الذكية التي تمكنك من إدارة وتحليل جميع حملاتك الإعلانية على تيك توك من مكان واحد.
+                            Access your intelligent dashboard to manage and analyze advertising campaigns across 
+                            Google, TikTok, Meta, Snapchat, LinkedIn, and X from a single interface.
                         </p>
                     </div>
                 </div>
 
-                <!-- مزايا المنصة -->
+                <!-- Platform Features -->
                 <div class="space-y-6">
-                    <div class="flex items-start space-x-4 space-x-reverse">
-                        <div class="bg-blue-500/20 p-3 rounded-xl">
+                    <div class="flex items-start">
+                        <div class="bg-blue-500/20 p-3 rounded-xl mr-4">
                             <i class="fas fa-bolt text-blue-400 text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg mb-1">أتمتة متقدمة</h4>
-                            <p class="text-slate-400">أتمتة كاملة للحملات الإعلانية مع تحسين تلقائي للميزانيات والمزايدات.</p>
+                            <h4 class="font-bold text-lg mb-1">Advanced Automation</h4>
+                            <p class="text-slate-400">Complete campaign automation with automatic budget and bid optimization across all platforms.</p>
                         </div>
                     </div>
                     
-                    <div class="flex items-start space-x-4 space-x-reverse">
-                        <div class="bg-purple-500/20 p-3 rounded-xl">
+                    <div class="flex items-start">
+                        <div class="bg-purple-500/20 p-3 rounded-xl mr-4">
                             <i class="fas fa-brain text-purple-400 text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg mb-1">ذكاء اصطناعي</h4>
-                            <p class="text-slate-400">خوارزميات ذكية تحلل أداء حملاتك وتقدم توصيات تحسين فورية.</p>
+                            <h4 class="font-bold text-lg mb-1">AI-Powered Insights</h4>
+                            <p class="text-slate-400">Smart algorithms analyze campaign performance and provide instant optimization recommendations.</p>
                         </div>
                     </div>
                     
-                    <div class="flex items-start space-x-4 space-x-reverse">
-                        <div class="bg-green-500/20 p-3 rounded-xl">
+                    <div class="flex items-start">
+                        <div class="bg-green-500/20 p-3 rounded-xl mr-4">
                             <i class="fas fa-shield-alt text-green-400 text-xl"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-lg mb-1">أمان متكامل</h4>
-                            <p class="text-slate-400">نظام أمان متكامل يحمي بياناتك ويتوافق مع أعلى المعايير العالمية.</p>
+                            <h4 class="font-bold text-lg mb-1">Enterprise Security</h4>
+                            <p class="text-slate-400">Integrated security system protecting your data with compliance to global standards.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="bg-amber-500/20 p-3 rounded-xl mr-4">
+                            <i class="fas fa-plug text-amber-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-1">API Integration</h4>
+                            <p class="text-slate-400">Full API access for custom integrations and automated workflows across all platforms.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- إحصائيات -->
+                <!-- Platform Statistics -->
                 <div class="mt-12 grid grid-cols-3 gap-4 text-center">
-                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="feature-card p-4 rounded-xl">
                         <div class="text-2xl font-bold text-blue-400">500+</div>
-                        <div class="text-slate-400 text-sm">عميل نشط</div>
+                        <div class="text-slate-400 text-sm">Active Clients</div>
                     </div>
-                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="feature-card p-4 rounded-xl">
                         <div class="text-2xl font-bold text-blue-400">40%</div>
-                        <div class="text-slate-400 text-sm">زيادة في الأداء</div>
+                        <div class="text-slate-400 text-sm">Avg. ROAS Increase</div>
                     </div>
-                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="feature-card p-4 rounded-xl">
                         <div class="text-2xl font-bold text-blue-400">24/7</div>
-                        <div class="text-slate-400 text-sm">دعم فني</div>
+                        <div class="text-slate-400 text-sm">Technical Support</div>
+                    </div>
+                </div>
+
+                <!-- Supported Platforms -->
+                <div class="mt-8">
+                    <h4 class="font-bold mb-3 text-slate-300">Supported Platforms</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-sm">Google Ads</span>
+                        <span class="px-3 py-1 bg-pink-900/30 text-pink-400 rounded-full text-sm">TikTok Ads</span>
+                        <span class="px-3 py-1 bg-blue-700/30 text-blue-300 rounded-full text-sm">Meta Ads</span>
+                        <span class="px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full text-sm">Snapchat</span>
+                        <span class="px-3 py-1 bg-sky-900/30 text-sky-400 rounded-full text-sm">LinkedIn</span>
+                        <span class="px-3 py-1 bg-black/30 text-gray-300 rounded-full text-sm">X (Twitter)</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- الفوتر -->
+    <!-- Footer -->
     <footer class="border-t border-slate-800 py-8 mt-auto">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-            <p>© 2025 AI-X Marketing. جميع الحقوق محفوظة.</p>
+            <p>© 2024 AI-X Marketing Platform. All rights reserved.</p>
             <div class="flex gap-6 mt-4 md:mt-0">
-                <a href="privacy-policy.html" class="hover:text-white transition">سياسة الخصوصية</a>
-                <a href="terms-of-service.html" class="hover:text-white transition">شروط الخدمة</a>
-                <a href="contact.html" class="hover:text-white transition">اتصل بنا</a>
+                <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="terms-of-service.html" class="hover:text-white transition">Terms of Service</a>
+                <a href="platform-compliance.html" class="hover:text-white transition">Platform Compliance</a>
+                <a href="contact.html" class="hover:text-white transition">Contact Us</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // عناصر DOM
+        // DOM Elements
         const loginForm = document.getElementById('loginForm');
         const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
@@ -322,115 +384,144 @@
         const submitBtn = document.getElementById('submitBtn');
         const btnText = document.getElementById('btnText');
         const btnLoading = document.getElementById('btnLoading');
-        const darkModeToggle = document.getElementById('darkModeToggle');
+        const twoFactorToggle = document.getElementById('twoFactorToggle');
+        const privacyConsent = document.getElementById('privacyConsent');
         const emailError = document.getElementById('emailError');
         const passwordError = document.getElementById('passwordError');
+        const consentError = document.getElementById('consentError');
 
-        // تبديل رؤية كلمة المرور
+        // Toggle password visibility
         togglePassword.addEventListener('click', function() {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
-            this.innerHTML = type === 'password' ? '<i class="fas fa-eye text-slate-500"></i>' : '<i class="fas fa-eye-slash text-slate-500"></i>';
+            this.innerHTML = type === 'password' ? 
+                '<i class="fas fa-eye text-slate-500"></i>' : 
+                '<i class="fas fa-eye-slash text-slate-500"></i>';
         });
 
-        // التحقق من صحة البريد الإلكتروني
+        // Email validation
         function validateEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
 
-        // التحقق من صحة كلمة المرور
+        // Password validation
         function validatePassword(password) {
-            return password.length >= 6;
+            return password.length >= 8;
         }
 
-        // عرض خطأ
+        // Show error
         function showError(element, message) {
             element.textContent = message;
             element.classList.remove('hidden');
         }
 
-        // إخفاء خطأ
+        // Hide error
         function hideError(element) {
             element.classList.add('hidden');
         }
 
-        // معالجة تسجيل الدخول
+        // Handle social login
+        function handleSocialLogin(provider) {
+            console.log(`Initiating ${provider} login`);
+            // In production, redirect to OAuth endpoint
+            // window.location.href = `/api/auth/${provider}`;
+            
+            // For demo, show alert
+            alert(`Redirecting to ${provider} authentication...\n\nIn production, this would redirect to OAuth flow.`);
+        }
+
+        // Handle login submission
         loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // إعادة تعيين الأخطاء
+            // Reset errors
             hideError(emailError);
             hideError(passwordError);
+            hideError(consentError);
             
-            // الحصول على القيم
+            // Get values
             const email = emailInput.value.trim();
             const password = passwordInput.value;
             const remember = document.getElementById('remember').checked;
+            const use2FA = twoFactorToggle.checked;
+            const acceptedPrivacy = privacyConsent.checked;
             
-            // التحقق من الصحة
+            // Validation
             let isValid = true;
             
             if (!validateEmail(email)) {
-                showError(emailError, 'يرجى إدخال بريد إلكتروني صحيح');
+                showError(emailError, 'Please enter a valid email address');
                 isValid = false;
             }
             
             if (!validatePassword(password)) {
-                showError(passwordError, 'كلمة المرور يجب أن تكون 6 أحرف على الأقل');
+                showError(passwordError, 'Password must be at least 8 characters');
+                isValid = false;
+            }
+            
+            if (!acceptedPrivacy) {
+                showError(consentError, 'You must accept the Privacy Policy and Terms of Service');
                 isValid = false;
             }
             
             if (!isValid) return;
             
-            // عرض حالة التحميل
+            // Show loading state
             btnText.classList.add('hidden');
             btnLoading.classList.remove('hidden');
             submitBtn.disabled = true;
             
-            // محاكاة طلب API (في الحقيقة سيكون اتصال بخادمك)
+            // Simulate API request
             try {
-                // هنا ستقوم بربط هذا الكود بخادمك الحقيقي
-                console.log('بيانات تسجيل الدخول:', { email, password, remember });
+                console.log('Login attempt:', { 
+                    email: email.substring(0, 3) + '...', 
+                    remember, 
+                    use2FA 
+                });
                 
-                // محاكاة تأخير الشبكة
+                // Simulate network delay
                 await new Promise(resolve => setTimeout(resolve, 1500));
                 
-                // في بيئة الإنتاج، استبدل هذا بـ:
-                // const response = await fetch('/api/login', {
+                // In production, use:
+                // const response = await fetch('/api/auth/login', {
                 //     method: 'POST',
                 //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify({ email, password, remember })
+                //     body: JSON.stringify({ email, password, remember, use2FA })
                 // });
-                // const data = await response.json();
                 
-                // محاكاة نجاح تسجيل الدخول
-                const mockSuccess = true; // في الحقيقة، تحقق من response.ok
+                // Simulate success
+                const mockSuccess = true;
                 
                 if (mockSuccess) {
-                    // عرض رسالة نجاح
-                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>تم تسجيل الدخول بنجاح!';
-                    submitBtn.classList.remove('gradient-bg');
-                    submitBtn.classList.add('bg-green-600');
-                    
-                    // توجيه المستخدم إلى لوحة التحكم
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html'; // سيتم إنشاء هذه الصفحة لاحقاً
-                    }, 1000);
+                    if (use2FA) {
+                        // Redirect to 2FA verification
+                        window.location.href = 'two-factor.html?email=' + encodeURIComponent(email);
+                    } else {
+                        // Show success message
+                        submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Login Successful!';
+                        submitBtn.classList.remove('gradient-bg');
+                        submitBtn.classList.add('bg-green-600');
+                        
+                        // Redirect to dashboard
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 1000);
+                    }
                 } else {
-                    throw new Error('فشل تسجيل الدخول');
+                    throw new Error('Login failed');
                 }
                 
             } catch (error) {
-                // إعادة حالة الزر
+                // Reset button state
                 btnText.classList.remove('hidden');
                 btnLoading.classList.add('hidden');
                 submitBtn.disabled = false;
                 
-                // عرض رسالة خطأ
-                showError(passwordError, 'البريد الإلكتروني أو كلمة المرور غير صحيحة');
+                // Show error message
+                showError(passwordError, 'Invalid email or password');
                 
-                // اهتزاز النموذج
+                // Add shake animation
                 loginForm.classList.add('animate-shake');
                 setTimeout(() => {
                     loginForm.classList.remove('animate-shake');
@@ -438,30 +529,51 @@
             }
         });
 
-        // تبديل الوضع الداكن
-        darkModeToggle.addEventListener('change', function() {
+        // 2FA toggle handler
+        twoFactorToggle.addEventListener('change', function() {
             if (this.checked) {
-                document.body.classList.add('dark');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                document.body.classList.remove('dark');
-                localStorage.setItem('darkMode', 'disabled');
+                console.log('Two-factor authentication enabled');
+                // In production, make API call to update user preferences
             }
         });
 
-        // تحميل تفضيل الوضع الداكن
+        // Check for saved credentials
         document.addEventListener('DOMContentLoaded', function() {
-            const savedDarkMode = localStorage.getItem('darkMode');
-            if (savedDarkMode === 'disabled') {
-                darkModeToggle.checked = false;
-                document.body.classList.remove('dark');
-            } else {
-                darkModeToggle.checked = true;
-                document.body.classList.add('dark');
+            const savedEmail = localStorage.getItem('savedEmail');
+            const savedRemember = localStorage.getItem('rememberLogin');
+            
+            if (savedEmail && savedRemember === 'true') {
+                emailInput.value = savedEmail;
+                document.getElementById('remember').checked = true;
+            }
+            
+            // Check URL parameters for OAuth callback
+            const urlParams = new URLSearchParams(window.location.search);
+            const oauthSuccess = urlParams.get('oauth_success');
+            
+            if (oauthSuccess === 'true') {
+                alert('Social login successful! Redirecting to dashboard...');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1000);
             }
         });
 
-        // إضافة تأثيرات CSS للاهتزاز
+        // Save credentials if remember me is checked
+        loginForm.addEventListener('submit', function() {
+            const remember = document.getElementById('remember').checked;
+            const email = emailInput.value;
+            
+            if (remember && email) {
+                localStorage.setItem('savedEmail', email);
+                localStorage.setItem('rememberLogin', 'true');
+            } else {
+                localStorage.removeItem('savedEmail');
+                localStorage.removeItem('rememberLogin');
+            }
+        });
+
+        // Add shake animation CSS
         const style = document.createElement('style');
         style.textContent = `
             @keyframes shake {

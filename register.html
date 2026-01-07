@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إنشاء حساب جديد - AI-X Marketing</title>
+    <title>Create Account - AI-X Marketing Platform</title>
+    <meta name="description" content="Create your AI-X Marketing Platform account to automate advertising campaigns across multiple platforms">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { 
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             min-height: 100vh;
+            color: #fff;
         }
         .gradient-text { 
             background: linear-gradient(90deg, #3b82f6, #8b5cf6); 
@@ -49,6 +51,7 @@
             border: 2px solid #334155;
             transition: all 0.3s ease;
             cursor: pointer;
+            background: rgba(30, 41, 59, 0.7);
         }
         .business-type-card:hover {
             border-color: #3b82f6;
@@ -56,7 +59,7 @@
         }
         .business-type-card.selected {
             border-color: #3b82f6;
-            background-color: rgba(59, 130, 246, 0.1);
+            background-color: rgba(59, 130, 246, 0.2);
         }
         .checkbox-container input:checked + .checkmark {
             background-color: #3b82f6;
@@ -71,32 +74,46 @@
             transform: translate(-50%, -50%);
             font-size: 12px;
         }
+        .platform-selection {
+            border: 2px solid #334155;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .platform-selection:hover {
+            border-color: #3b82f6;
+        }
+        .platform-selection.selected {
+            border-color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.1);
+        }
     </style>
 </head>
 <body class="text-white">
 
-    <!-- شريط التنقل العلوي -->
+    <!-- Top Navigation Bar -->
     <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
         <a href="index.html" class="text-2xl font-bold gradient-text flex items-center">
-            <i class="fas fa-rocket mr-2"></i>AI-X Marketing
+            <i class="fas fa-rocket mr-2"></i>AI-X Marketing Platform
         </a>
-        <div class="flex items-center space-x-4 space-x-reverse">
-            <span class="text-slate-400 hidden md:inline">لديك حساب بالفعل؟</span>
-            <a href="login.html" class="border border-blue-500 text-blue-500 hover:bg-blue-900 px-5 py-2 rounded-lg transition duration-200">تسجيل الدخول</a>
+        <div class="flex items-center space-x-4">
+            <span class="text-slate-400 hidden md:inline">Already have an account?</span>
+            <a href="login.html" class="border border-blue-500 text-blue-500 hover:bg-blue-900 px-5 py-2 rounded-lg transition duration-200 font-medium">
+                Sign In
+            </a>
         </div>
     </nav>
 
     <div class="flex flex-col lg:flex-row min-h-[calc(100vh-88px)] max-w-7xl mx-auto p-4">
         
-        <!-- الجانب الأيسر: نموذج التسجيل -->
+        <!-- Left Side: Registration Form -->
         <div class="lg:w-1/2 p-8 flex items-center justify-center">
             <div class="w-full max-w-2xl">
                 <div class="text-center mb-10">
-                    <h1 class="text-3xl font-bold mb-2">انضم إلى منصتنا 🚀</h1>
-                    <p class="text-slate-400">ابدأ رحلتك نحو حملات تيك توك ناجحة</p>
+                    <h1 class="text-3xl font-bold mb-2">Join Our Platform 🚀</h1>
+                    <p class="text-slate-400">Start your journey towards successful multi-platform advertising</p>
                 </div>
 
-                <!-- مؤشر التقدم -->
+                <!-- Progress Indicator -->
                 <div class="mb-10">
                     <div class="flex items-center justify-between mb-2">
                         <div class="flex items-center">
@@ -105,26 +122,29 @@
                             <div class="step-indicator" data-step="2"></div>
                             <div class="progress-line mx-2"></div>
                             <div class="step-indicator" data-step="3"></div>
+                            <div class="progress-line mx-2"></div>
+                            <div class="step-indicator" data-step="4"></div>
                         </div>
-                        <span class="text-sm text-slate-400" id="stepText">الخطوة 1 من 3</span>
+                        <span class="text-sm text-slate-400" id="stepText">Step 1 of 4</span>
                     </div>
                     <div class="flex justify-between text-sm text-slate-500">
-                        <span>المعلومات الأساسية</span>
-                        <span>البيانات التجارية</span>
-                        <span>تفضيلات المنصة</span>
+                        <span>Basic Info</span>
+                        <span>Business Details</span>
+                        <span>Platform Selection</span>
+                        <span>Preferences</span>
                     </div>
                 </div>
 
-                <!-- نموذج التسجيل متعدد الخطوات -->
+                <!-- Multi-step Registration Form -->
                 <form id="registerForm" class="space-y-8">
                     
-                    <!-- الخطوة 1: المعلومات الأساسية -->
+                    <!-- Step 1: Basic Information -->
                     <div id="step1" class="step-content space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
-                            <!-- الاسم الأول -->
+                            <!-- First Name -->
                             <div>
-                                <label class="block text-slate-300 mb-2 text-right font-medium">
-                                    الاسم الأول
+                                <label class="block text-slate-300 mb-2 font-medium">
+                                    First Name
                                 </label>
                                 <input 
                                     type="text" 
@@ -132,15 +152,15 @@
                                     name="firstName"
                                     required
                                     class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
-                                    placeholder="أحمد"
+                                    placeholder="John"
                                 >
-                                <div id="firstNameError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                                <div id="firstNameError" class="text-red-500 text-sm mt-1 hidden"></div>
                             </div>
 
-                            <!-- الاسم الأخير -->
+                            <!-- Last Name -->
                             <div>
-                                <label class="block text-slate-300 mb-2 text-right font-medium">
-                                    الاسم الأخير
+                                <label class="block text-slate-300 mb-2 font-medium">
+                                    Last Name
                                 </label>
                                 <input 
                                     type="text" 
@@ -148,19 +168,19 @@
                                     name="lastName"
                                     required
                                     class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
-                                    placeholder="محمد"
+                                    placeholder="Doe"
                                 >
-                                <div id="lastNameError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                                <div id="lastNameError" class="text-red-500 text-sm mt-1 hidden"></div>
                             </div>
                         </div>
 
-                        <!-- البريد الإلكتروني -->
+                        <!-- Email Address -->
                         <div>
-                            <label class="block text-slate-300 mb-2 text-right font-medium">
-                                البريد الإلكتروني
+                            <label class="block text-slate-300 mb-2 font-medium">
+                                Email Address
                             </label>
                             <div class="relative">
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <i class="fas fa-envelope text-slate-500"></i>
                                 </div>
                                 <input 
@@ -168,21 +188,20 @@
                                     id="email"
                                     name="email"
                                     required
-                                    class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
-                                    placeholder="ahmed@example.com"
-                                    dir="ltr"
+                                    class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pl-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                                    placeholder="john@example.com"
                                 >
                             </div>
-                            <div id="emailError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                            <div id="emailError" class="text-red-500 text-sm mt-1 hidden"></div>
                         </div>
 
-                        <!-- كلمة المرور -->
+                        <!-- Password -->
                         <div>
-                            <label class="block text-slate-300 mb-2 text-right font-medium">
-                                كلمة المرور
+                            <label class="block text-slate-300 mb-2 font-medium">
+                                Password
                             </label>
                             <div class="relative">
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <i class="fas fa-lock text-slate-500"></i>
                                 </div>
                                 <input 
@@ -190,41 +209,40 @@
                                     id="password"
                                     name="password"
                                     required
-                                    class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                                    class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pl-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                                     placeholder="••••••••"
-                                    dir="ltr"
                                 >
                                 <button 
                                     type="button" 
                                     id="togglePassword"
-                                    class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 hover:text-slate-300 transition"
+                                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 hover:text-slate-300 transition"
                                 >
                                     <i class="fas fa-eye"></i>
                                 </button>
                             </div>
-                            <!-- مؤشر قوة كلمة المرور -->
+                            <!-- Password Strength Indicator -->
                             <div class="mt-2">
-                                <div class="flex space-x-1 space-x-reverse mb-1">
+                                <div class="flex space-x-1 mb-1">
                                     <div class="password-strength-meter flex-1 rounded-full bg-slate-700" id="passwordStrength1"></div>
                                     <div class="password-strength-meter flex-1 rounded-full bg-slate-700" id="passwordStrength2"></div>
                                     <div class="password-strength-meter flex-1 rounded-full bg-slate-700" id="passwordStrength3"></div>
                                     <div class="password-strength-meter flex-1 rounded-full bg-slate-700" id="passwordStrength4"></div>
                                 </div>
                                 <div class="flex justify-between text-xs text-slate-500">
-                                    <span id="passwordStrengthText">ضعيفة</span>
-                                    <span id="passwordRequirements">8 أحرف على الأقل</span>
+                                    <span id="passwordStrengthText">Weak</span>
+                                    <span id="passwordRequirements">Minimum 8 characters</span>
                                 </div>
                             </div>
-                            <div id="passwordError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                            <div id="passwordError" class="text-red-500 text-sm mt-1 hidden"></div>
                         </div>
 
-                        <!-- تأكيد كلمة المرور -->
+                        <!-- Confirm Password -->
                         <div>
-                            <label class="block text-slate-300 mb-2 text-right font-medium">
-                                تأكيد كلمة المرور
+                            <label class="block text-slate-300 mb-2 font-medium">
+                                Confirm Password
                             </label>
                             <div class="relative">
-                                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <i class="fas fa-lock text-slate-500"></i>
                                 </div>
                                 <input 
@@ -232,298 +250,461 @@
                                     id="confirmPassword"
                                     name="confirmPassword"
                                     required
-                                    class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
+                                    class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 pl-12 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                                     placeholder="••••••••"
-                                    dir="ltr"
                                 >
                             </div>
-                            <div id="confirmPasswordError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                            <div id="confirmPasswordError" class="text-red-500 text-sm mt-1 hidden"></div>
                         </div>
                     </div>
 
-                    <!-- الخطوة 2: البيانات التجارية -->
+                    <!-- Step 2: Business Information -->
                     <div id="step2" class="step-content space-y-6 hidden">
-                        <!-- نوع النشاط التجاري -->
+                        <!-- Business Type -->
                         <div>
-                            <label class="block text-slate-300 mb-4 text-right font-medium">
-                                نوع نشاطك التجاري
+                            <label class="block text-slate-300 mb-4 font-medium">
+                                Your Business Type
                             </label>
                             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                                 <div class="business-type-card p-4 rounded-xl text-center" data-type="ecommerce">
                                     <i class="fas fa-shopping-cart text-2xl text-blue-400 mb-2"></i>
-                                    <div class="font-medium">التجارة الإلكترونية</div>
+                                    <div class="font-medium">E-commerce</div>
                                 </div>
                                 <div class="business-type-card p-4 rounded-xl text-center" data-type="agency">
                                     <i class="fas fa-briefcase text-2xl text-blue-400 mb-2"></i>
-                                    <div class="font-medium">وكالة تسويق</div>
+                                    <div class="font-medium">Marketing Agency</div>
                                 </div>
                                 <div class="business-type-card p-4 rounded-xl text-center" data-type="brand">
                                     <i class="fas fa-star text-2xl text-blue-400 mb-2"></i>
-                                    <div class="font-medium">علامة تجارية</div>
+                                    <div class="font-medium">Brand</div>
                                 </div>
-                                <div class="business-type-card p-4 rounded-xl text-center" data-type="creator">
-                                    <i class="fas fa-user text-2xl text-blue-400 mb-2"></i>
-                                    <div class="font-medium">منشئ محتوى</div>
+                                <div class="business-type-card p-4 rounded-xl text-center" data-type="saas">
+                                    <i class="fas fa-laptop-code text-2xl text-blue-400 mb-2"></i>
+                                    <div class="font-medium">SaaS</div>
                                 </div>
-                                <div class="business-type-card p-4 rounded-xl text-center" data-type="service">
-                                    <i class="fas fa-concierge-bell text-2xl text-blue-400 mb-2"></i>
-                                    <div class="font-medium">خدمات</div>
+                                <div class="business-type-card p-4 rounded-xl text-center" data-type="enterprise">
+                                    <i class="fas fa-building text-2xl text-blue-400 mb-2"></i>
+                                    <div class="font-medium">Enterprise</div>
                                 </div>
                                 <div class="business-type-card p-4 rounded-xl text-center" data-type="other">
                                     <i class="fas fa-ellipsis-h text-2xl text-blue-400 mb-2"></i>
-                                    <div class="font-medium">أخرى</div>
+                                    <div class="font-medium">Other</div>
                                 </div>
                             </div>
                             <input type="hidden" id="businessType" name="businessType" required>
-                            <div id="businessTypeError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                            <div id="businessTypeError" class="text-red-500 text-sm mt-1 hidden"></div>
                         </div>
 
-                        <!-- اسم الشركة -->
+                        <!-- Company Name -->
                         <div>
-                            <label class="block text-slate-300 mb-2 text-right font-medium">
-                                اسم الشركة (اختياري)
+                            <label class="block text-slate-300 mb-2 font-medium">
+                                Company Name (Optional)
                             </label>
                             <input 
                                 type="text" 
                                 id="companyName"
                                 name="companyName"
                                 class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
-                                placeholder="اسم شركتك"
+                                placeholder="Your company name"
                             >
                         </div>
 
-                        <!-- موقع الشركة -->
+                        <!-- Company Location -->
                         <div>
-                            <label class="block text-slate-300 mb-2 text-right font-medium">
-                                موقع الشركة
+                            <label class="block text-slate-300 mb-2 font-medium">
+                                Company Location
                             </label>
                             <select 
                                 id="companyLocation"
                                 name="companyLocation"
                                 class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                             >
-                                <option value="">اختر الدولة</option>
-                                <option value="uae">الإمارات العربية المتحدة</option>
-                                <option value="saudi">المملكة العربية السعودية</option>
-                                <option value="kuwait">الكويت</option>
-                                <option value="qatar">قطر</option>
-                                <option value="bahrain">البحرين</option>
-                                <option value="oman">عمان</option>
-                                <option value="other">دولة أخرى</option>
+                                <option value="">Select Country</option>
+                                <option value="us">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="ca">Canada</option>
+                                <option value="au">Australia</option>
+                                <option value="eu">European Union</option>
+                                <option value="ae">United Arab Emirates</option>
+                                <option value="sa">Saudi Arabia</option>
+                                <option value="other">Other Country</option>
                             </select>
                         </div>
 
-                        <!-- الميزانية الشهرية للإعلانات -->
+                        <!-- Monthly Ad Budget -->
                         <div>
-                            <label class="block text-slate-300 mb-2 text-right font-medium">
-                                الميزانية الشهرية التقريبية للإعلانات (دولار)
+                            <label class="block text-slate-300 mb-2 font-medium">
+                                Estimated Monthly Ad Budget (USD)
                             </label>
                             <select 
                                 id="adBudget"
                                 name="adBudget"
                                 class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-200"
                             >
-                                <option value="">اختر الفئة</option>
-                                <option value="0-1000">أقل من 1,000 دولار</option>
-                                <option value="1000-5000">1,000 - 5,000 دولار</option>
-                                <option value="5000-10000">5,000 - 10,000 دولار</option>
-                                <option value="10000-50000">10,000 - 50,000 دولار</option>
-                                <option value="50000+">أكثر من 50,000 دولار</option>
+                                <option value="">Select Range</option>
+                                <option value="0-1000">Less than $1,000</option>
+                                <option value="1000-5000">$1,000 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="10000-50000">$10,000 - $50,000</option>
+                                <option value="50000+">More than $50,000</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- الخطوة 3: التفضيلات والموافقة -->
+                    <!-- Step 3: Platform Selection -->
                     <div id="step3" class="step-content space-y-6 hidden">
-                        <!-- نوع الخطة المطلوبة -->
                         <div>
-                            <label class="block text-slate-300 mb-4 text-right font-medium">
-                                الخطة التي ترغب بالاشتراك بها
+                            <label class="block text-slate-300 mb-4 font-medium">
+                                Select Advertising Platforms
+                            </label>
+                            <p class="text-slate-400 mb-4 text-sm">
+                                Choose which platforms you want to manage with our AI automation tools
+                            </p>
+                            
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <!-- Google -->
+                                <label class="platform-selection p-4 rounded-xl cursor-pointer">
+                                    <input type="checkbox" name="platforms[]" value="google" class="hidden">
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg mr-3">
+                                            <i class="fab fa-google text-blue-600 dark:text-blue-400"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">Google Ads</div>
+                                            <div class="text-xs text-slate-500">Search, Display, YouTube</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <!-- TikTok -->
+                                <label class="platform-selection p-4 rounded-xl cursor-pointer">
+                                    <input type="checkbox" name="platforms[]" value="tiktok" class="hidden">
+                                    <div class="flex items-center">
+                                        <div class="bg-black/20 p-2 rounded-lg mr-3">
+                                            <i class="fab fa-tiktok"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">TikTok Ads</div>
+                                            <div class="text-xs text-slate-500">Video, Shopping, Creator</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <!-- Meta -->
+                                <label class="platform-selection p-4 rounded-xl cursor-pointer">
+                                    <input type="checkbox" name="platforms[]" value="meta" class="hidden" checked>
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg mr-3">
+                                            <i class="fab fa-facebook text-blue-600 dark:text-blue-400"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">Meta Ads</div>
+                                            <div class="text-xs text-slate-500">Facebook, Instagram</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <!-- Snapchat -->
+                                <label class="platform-selection p-4 rounded-xl cursor-pointer">
+                                    <input type="checkbox" name="platforms[]" value="snapchat" class="hidden">
+                                    <div class="flex items-center">
+                                        <div class="bg-yellow-100 dark:bg-yellow-900/30 p-2 rounded-lg mr-3">
+                                            <i class="fab fa-snapchat text-yellow-600 dark:text-yellow-400"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">Snapchat</div>
+                                            <div class="text-xs text-slate-500">AR, Filters, Stories</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <!-- LinkedIn -->
+                                <label class="platform-selection p-4 rounded-xl cursor-pointer">
+                                    <input type="checkbox" name="platforms[]" value="linkedin" class="hidden">
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg mr-3">
+                                            <i class="fab fa-linkedin text-blue-700 dark:text-blue-400"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">LinkedIn</div>
+                                            <div class="text-xs text-slate-500">B2B, Lead Gen</div>
+                                        </div>
+                                    </div>
+                                </label>
+                                
+                                <!-- X (Twitter) -->
+                                <label class="platform-selection p-4 rounded-xl cursor-pointer">
+                                    <input type="checkbox" name="platforms[]" value="twitter" class="hidden">
+                                    <div class="flex items-center">
+                                        <div class="bg-sky-100 dark:bg-sky-900/30 p-2 rounded-lg mr-3">
+                                            <i class="fab fa-twitter text-sky-600 dark:text-sky-400"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-medium">X (Twitter)</div>
+                                            <div class="text-xs text-slate-500">Promoted Tweets</div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div id="platformsError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+
+                        <!-- API Access Preference -->
+                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                            <label class="flex items-start">
+                                <div class="checkbox-container relative mt-1">
+                                    <input type="checkbox" id="apiAccess" name="apiAccess" class="opacity-0 absolute w-4 h-4">
+                                    <div class="checkmark w-4 h-4 border border-slate-600 rounded-sm flex items-center justify-center"></div>
+                                </div>
+                                <span class="ml-2 text-slate-300 text-sm">
+                                    I need API access for custom integrations
+                                    <span class="block text-xs text-slate-500 mt-1">
+                                        For developers and advanced users who want to build custom workflows
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Preferences & Finalization -->
+                    <div id="step4" class="step-content space-y-6 hidden">
+                        <!-- Plan Selection -->
+                        <div>
+                            <label class="block text-slate-300 mb-4 font-medium">
+                                Select Your Plan
                             </label>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <label class="cursor-pointer">
-                                    <input type="radio" name="plan" value="basic" class="hidden peer">
+                                    <input type="radio" name="plan" value="starter" class="hidden peer">
                                     <div class="p-4 border-2 border-slate-700 rounded-xl peer-checked:border-blue-500 peer-checked:bg-blue-900/20 transition duration-200">
-                                        <div class="font-bold mb-2">الخطة الأساسية</div>
-                                        <div class="text-sm text-slate-400">$99/شهر</div>
+                                        <div class="font-bold mb-2">Starter</div>
+                                        <div class="text-sm text-slate-400 mb-3">Perfect for small businesses</div>
+                                        <div class="font-bold text-lg">$99<span class="text-slate-400 text-sm">/month</span></div>
                                     </div>
                                 </label>
                                 <label class="cursor-pointer">
-                                    <input type="radio" name="plan" value="pro" class="hidden peer" checked>
+                                    <input type="radio" name="plan" value="professional" class="hidden peer" checked>
                                     <div class="p-4 border-2 border-slate-700 rounded-xl peer-checked:border-blue-500 peer-checked:bg-blue-900/20 transition duration-200">
-                                        <div class="font-bold mb-2">الخطة المتقدمة</div>
-                                        <div class="text-sm text-slate-400">$299/شهر</div>
+                                        <div class="font-bold mb-2">Professional</div>
+                                        <div class="text-sm text-slate-400 mb-3">Best for growing businesses</div>
+                                        <div class="font-bold text-lg">$299<span class="text-white text-sm">/month</span></div>
                                     </div>
                                 </label>
                                 <label class="cursor-pointer">
                                     <input type="radio" name="plan" value="enterprise" class="hidden peer">
                                     <div class="p-4 border-2 border-slate-700 rounded-xl peer-checked:border-blue-500 peer-checked:bg-blue-900/20 transition duration-200">
-                                        <div class="font-bold mb-2">خطة المؤسسات</div>
-                                        <div class="text-sm text-slate-400">$899/شهر</div>
+                                        <div class="font-bold mb-2">Enterprise</div>
+                                        <div class="text-sm text-slate-400 mb-3">For large organizations</div>
+                                        <div class="font-bold text-lg">Custom<span class="text-slate-400 text-sm">/month</span></div>
                                     </div>
                                 </label>
                             </div>
                         </div>
 
-                        <!-- التفضيلات -->
+                        <!-- Preferences -->
                         <div class="space-y-4">
                             <label class="flex items-center">
                                 <div class="checkbox-container relative">
                                     <input type="checkbox" name="newsletter" class="opacity-0 absolute w-4 h-4" checked>
                                     <div class="checkmark w-4 h-4 border border-slate-600 rounded-sm flex items-center justify-center"></div>
                                 </div>
-                                <span class="mr-2 text-slate-300">أرغب في تلقي النشرة الإخبارية وتحديثات المنصة</span>
+                                <span class="ml-2 text-slate-300">Receive platform updates and newsletter</span>
                             </label>
                             <label class="flex items-center">
                                 <div class="checkbox-container relative">
                                     <input type="checkbox" name="tutorials" class="opacity-0 absolute w-4 h-4" checked>
                                     <div class="checkmark w-4 h-4 border border-slate-600 rounded-sm flex items-center justify-center"></div>
                                 </div>
-                                <span class="mr-2 text-slate-300">أرغب في الحصول على نصائح وتدريبات حول التسويق</span>
+                                <span class="ml-2 text-slate-300">Get marketing tips and tutorials</span>
+                            </label>
+                            <label class="flex items-center">
+                                <div class="checkbox-container relative">
+                                    <input type="checkbox" name="webinars" class="opacity-0 absolute w-4 h-4" checked>
+                                    <div class="checkmark w-4 h-4 border border-slate-600 rounded-sm flex items-center justify-center"></div>
+                                </div>
+                                <span class="ml-2 text-slate-300">Invite me to webinars and training sessions</span>
                             </label>
                         </div>
 
-                        <!-- الموافقة على الشروط -->
+                        <!-- Terms Agreement -->
                         <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
                             <label class="flex items-start">
                                 <div class="checkbox-container relative mt-1">
                                     <input type="checkbox" id="agreeTerms" name="agreeTerms" required class="opacity-0 absolute w-4 h-4">
                                     <div class="checkmark w-4 h-4 border border-slate-600 rounded-sm flex items-center justify-center"></div>
                                 </div>
-                                <span class="mr-2 text-slate-300 text-sm">
-                                    أوافق على 
-                                    <a href="terms-of-service.html" class="text-blue-400 hover:text-blue-300">شروط الخدمة</a>
-                                    و
-                                    <a href="privacy-policy.html" class="text-blue-400 hover:text-blue-300">سياسة الخصوصية</a>
-                                    الخاصة بمنصة AI-X Marketing
+                                <span class="ml-2 text-slate-300 text-sm">
+                                    I agree to the 
+                                    <a href="terms-of-service.html" class="text-blue-400 hover:text-blue-300">Terms of Service</a>
+                                    and
+                                    <a href="privacy-policy.html" class="text-blue-400 hover:text-blue-300">Privacy Policy</a>
+                                    of AI-X Marketing Platform
                                 </span>
                             </label>
-                            <div id="termsError" class="text-red-500 text-sm mt-1 text-right hidden"></div>
+                            <div id="termsError" class="text-red-500 text-sm mt-1 hidden"></div>
                         </div>
 
-                        <!-- ملخص البيانات -->
+                        <!-- Data Processing Agreement -->
                         <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold mb-2 text-blue-400">ملخص بياناتك:</h4>
+                            <label class="flex items-start">
+                                <div class="checkbox-container relative mt-1">
+                                    <input type="checkbox" id="agreeDPA" name="agreeDPA" required class="opacity-0 absolute w-4 h-4">
+                                    <div class="checkmark w-4 h-4 border border-slate-600 rounded-sm flex items-center justify-center"></div>
+                                </div>
+                                <span class="ml-2 text-slate-300 text-sm">
+                                    I agree to the 
+                                    <a href="data-processing-agreement.html" class="text-blue-400 hover:text-blue-300">Data Processing Agreement</a>
+                                    for platform integrations
+                                </span>
+                            </label>
+                            <div id="dpaError" class="text-red-500 text-sm mt-1 hidden"></div>
+                        </div>
+
+                        <!-- Summary -->
+                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                            <h4 class="font-bold mb-2 text-blue-400">Registration Summary:</h4>
                             <div class="text-sm text-slate-400 space-y-1">
                                 <div id="summaryName"></div>
                                 <div id="summaryEmail"></div>
                                 <div id="summaryBusiness"></div>
+                                <div id="summaryPlatforms"></div>
                                 <div id="summaryPlan"></div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- أزرار التنقل بين الخطوات -->
+                    <!-- Navigation Buttons -->
                     <div class="flex justify-between pt-8">
                         <button 
                             type="button" 
                             id="prevBtn"
-                            class="border border-slate-700 text-slate-300 px-6 py-3 rounded-xl hover:bg-slate-800 transition duration-200 hidden"
+                            class="border border-slate-700 text-slate-300 px-6 py-3 rounded-xl hover:bg-slate-800 transition duration-200 font-medium hidden"
                         >
-                            <i class="fas fa-arrow-right ml-2"></i>السابق
+                            <i class="fas fa-arrow-left mr-2"></i>Previous
                         </button>
                         <button 
                             type="button" 
                             id="nextBtn"
                             class="gradient-bg text-white font-bold px-8 py-3 rounded-xl hover:opacity-90 transition duration-200"
                         >
-                            التالي <i class="fas fa-arrow-left mr-2"></i>
+                            Next <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
 
-                    <!-- زر إنشاء الحساب (يظهر في الخطوة الأخيرة) -->
+                    <!-- Submit Button (Shows on final step) -->
                     <div id="submitSection" class="hidden">
                         <button 
                             type="submit" 
                             id="submitBtn"
-                            class="w-full gradient-bg text-white font-bold py-4 px-4 rounded-xl hover:opacity-90 transition duration-200"
+                            class="w-full gradient-bg text-white font-bold py-4 px-4 rounded-xl hover:opacity-90 transition duration-200 shadow-lg shadow-blue-500/20"
                         >
-                            <span id="btnText">إنشاء الحساب</span>
+                            <span id="btnText">Create Account</span>
                             <span id="btnLoading" class="hidden">
-                                <i class="fas fa-spinner fa-spin ml-2"></i>جاري إنشاء الحساب...
+                                <i class="fas fa-spinner fa-spin mr-2"></i>Creating Account...
                             </span>
                         </button>
                     </div>
                 </form>
 
-                <!-- روابط إضافية -->
+                <!-- Additional Links -->
                 <div class="text-center mt-8">
                     <p class="text-slate-400">
-                        لديك حساب بالفعل؟ 
+                        Already have an account? 
                         <a href="login.html" class="text-blue-400 hover:text-blue-300 font-medium transition duration-200">
-                            سجل الدخول هنا
+                            Sign in here
                         </a>
                     </p>
                     <p class="text-sm text-slate-500 mt-4">
-                        بالضغط على "إنشاء الحساب" فإنك توافق على شروطنا وسياسة الخصوصية
+                        By clicking "Create Account" you agree to our terms and privacy policy
+                    </p>
+                    <p class="text-sm text-slate-500 mt-2">
+                        Need enterprise pricing? <a href="contact.html" class="text-blue-400 hover:text-blue-300">Contact sales</a>
                     </p>
                 </div>
             </div>
         </div>
 
-        <!-- الجانب الأيمن: معلومات -->
+        <!-- Right Side: Benefits Information -->
         <div class="lg:w-1/2 p-8 hidden lg:flex flex-col justify-center">
             <div class="relative max-w-lg mx-auto">
-                <!-- مزايا التسجيل -->
+                <!-- Registration Benefits -->
                 <div class="mb-12">
-                    <h2 class="text-2xl font-bold mb-6 gradient-text text-center">مزايا انضمامك لمنصتنا</h2>
+                    <h2 class="text-2xl font-bold mb-6 gradient-text text-center">Benefits of Joining Our Platform</h2>
                     <div class="space-y-6">
-                        <div class="flex items-center space-x-4 space-x-reverse p-4 bg-slate-900/50 rounded-xl border border-slate-800">
-                            <div class="bg-blue-500/20 p-3 rounded-xl">
+                        <div class="flex items-center p-4 bg-slate-900/50 rounded-xl border border-slate-800">
+                            <div class="bg-blue-500/20 p-3 rounded-xl mr-4">
                                 <i class="fas fa-clock text-blue-400"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-1">14 يوم تجريبي مجاني</h4>
-                                <p class="text-slate-400 text-sm">جرب جميع الميزات بدون أي رسوم</p>
+                                <h4 class="font-bold mb-1">14-Day Free Trial</h4>
+                                <p class="text-slate-400 text-sm">Try all features with no credit card required</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4 space-x-reverse p-4 bg-slate-900/50 rounded-xl border border-slate-800">
-                            <div class="bg-green-500/20 p-3 rounded-xl">
-                                <i class="fas fa-chart-line text-green-400"></i>
+                        <div class="flex items-center p-4 bg-slate-900/50 rounded-xl border border-slate-800">
+                            <div class="bg-green-500/20 p-3 rounded-xl mr-4">
+                                <i class="fas fa-chart-network text-green-400"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-1">تقارير وتحليلات متقدمة</h4>
-                                <p class="text-slate-400 text-sm">اتخذ قرارات مدروسة بناءً على بيانات حقيقية</p>
+                                <h4 class="font-bold mb-1">Multi-Platform Analytics</h4>
+                                <p class="text-slate-400 text-sm">Unified reporting across all advertising platforms</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4 space-x-reverse p-4 bg-slate-900/50 rounded-xl border border-slate-800">
-                            <div class="bg-purple-500/20 p-3 rounded-xl">
-                                <i class="fas fa-headset text-purple-400"></i>
+                        <div class="flex items-center p-4 bg-slate-900/50 rounded-xl border border-slate-800">
+                            <div class="bg-purple-500/20 p-3 rounded-xl mr-4">
+                                <i class="fas fa-brain text-purple-400"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold mb-1">دعم فني 24/7</h4>
-                                <p class="text-slate-400 text-sm">فريق دعم فني متاح على مدار الساعة</p>
+                                <h4 class="font-bold mb-1">AI-Powered Optimization</h4>
+                                <p class="text-slate-400 text-sm">Automated campaign optimization with machine learning</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-slate-900/50 rounded-xl border border-slate-800">
+                            <div class="bg-amber-500/20 p-3 rounded-xl mr-4">
+                                <i class="fas fa-shield-alt text-amber-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Enterprise Security</h4>
+                                <p class="text-slate-400 text-sm">Bank-level security and compliance with platform policies</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-slate-900/50 rounded-xl border border-slate-800">
+                            <div class="bg-red-500/20 p-3 rounded-xl mr-4">
+                                <i class="fas fa-headset text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">24/7 Support</h4>
+                                <p class="text-slate-400 text-sm">Dedicated technical support available around the clock</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- شهادات العملاء -->
+                <!-- Platform Stats -->
                 <div class="mt-12">
-                    <h3 class="text-xl font-bold mb-6 text-center">ماذا يقول عملاؤنا</h3>
-                    <div class="space-y-4">
-                        <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-800">
-                            <div class="flex items-center mb-4">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center font-bold mr-3">
-                                    م
-                                </div>
-                                <div>
-                                    <div class="font-bold">محمد العلي</div>
-                                    <div class="text-slate-400 text-sm">مدير تسويق</div>
-                                </div>
-                            </div>
-                            <p class="text-slate-300">"المنصة غيرت طريقة إدارة حملاتنا على تيك توك. زادت نسبة التحويل بمقدار 40%"</p>
+                    <h3 class="text-xl font-bold mb-6 text-center">Platform Statistics</h3>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                            <div class="text-2xl font-bold text-blue-400">40%</div>
+                            <div class="text-slate-400 text-sm">Avg. ROAS Increase</div>
+                        </div>
+                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                            <div class="text-2xl font-bold text-green-400">99.9%</div>
+                            <div class="text-slate-400 text-sm">Platform Uptime</div>
+                        </div>
+                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                            <div class="text-2xl font-bold text-purple-400">500+</div>
+                            <div class="text-slate-400 text-sm">Active Clients</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- معلومات الأمان -->
+                <!-- Security Badge -->
                 <div class="mt-8 p-4 bg-green-900/20 border border-green-800 rounded-xl">
                     <div class="flex items-center">
-                        <i class="fas fa-shield-alt text-green-400 text-xl ml-3"></i>
+                        <i class="fas fa-shield-alt text-green-400 text-xl mr-3"></i>
                         <div>
-                            <h4 class="font-bold text-green-400">بياناتك محمية وآمنة</h4>
-                            <p class="text-sm text-slate-400">نستخدم تشفير من الدرجة الأولى لحماية جميع بياناتك</p>
+                            <h4 class="font-bold text-green-400">Your Data is Protected</h4>
+                            <p class="text-sm text-slate-400">We use enterprise-grade encryption and comply with all platform API policies</p>
                         </div>
                     </div>
                 </div>
@@ -531,25 +712,26 @@
         </div>
     </div>
 
-    <!-- الفوتر -->
+    <!-- Footer -->
     <footer class="border-t border-slate-800 py-8 mt-auto">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-            <p>© 2025 AI-X Marketing. جميع الحقوق محفوظة.</p>
+            <p>© 2024 AI-X Marketing Platform. All rights reserved.</p>
             <div class="flex gap-6 mt-4 md:mt-0">
-                <a href="privacy-policy.html" class="hover:text-white transition">سياسة الخصوصية</a>
-                <a href="terms-of-service.html" class="hover:text-white transition">شروط الخدمة</a>
-                <a href="contact.html" class="hover:text-white transition">اتصل بنا</a>
+                <a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="terms-of-service.html" class="hover:text-white transition">Terms of Service</a>
+                <a href="platform-compliance.html" class="hover:text-white transition">Platform Compliance</a>
+                <a href="contact.html" class="hover:text-white transition">Contact Us</a>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // متغيرات عامة
+        // Global variables
         let currentStep = 1;
-        const totalSteps = 3;
+        const totalSteps = 4;
 
-        // عناصر DOM
+        // DOM Elements
         const stepIndicators = document.querySelectorAll('.step-indicator');
         const progressLines = document.querySelectorAll('.progress-line');
         const stepContents = document.querySelectorAll('.step-content');
@@ -560,12 +742,13 @@
         const registerForm = document.getElementById('registerForm');
         const businessTypeCards = document.querySelectorAll('.business-type-card');
         const businessTypeInput = document.getElementById('businessType');
+        const platformSelections = document.querySelectorAll('.platform-selection');
 
-        // تحديث الخطوة
+        // Update step function
         function updateStep(step) {
             currentStep = step;
             
-            // تحديث المؤشرات
+            // Update indicators
             stepIndicators.forEach((indicator, index) => {
                 if (index < step) {
                     indicator.classList.add('active');
@@ -574,7 +757,7 @@
                 }
             });
             
-            // تحديث خطوط التقدم
+            // Update progress lines
             progressLines.forEach((line, index) => {
                 if (index < step - 1) {
                     line.classList.add('active');
@@ -583,10 +766,10 @@
                 }
             });
             
-            // تحديث نص الخطوة
-            stepText.textContent = `الخطوة ${step} من ${totalSteps}`;
+            // Update step text
+            stepText.textContent = `Step ${step} of ${totalSteps}`;
             
-            // إظهار/إخفاء المحتوى
+            // Show/hide content
             stepContents.forEach((content, index) => {
                 if (index + 1 === step) {
                     content.classList.remove('hidden');
@@ -595,7 +778,7 @@
                 }
             });
             
-            // إدارة الأزرار
+            // Manage buttons
             if (step === 1) {
                 prevBtn.classList.add('hidden');
                 nextBtn.classList.remove('hidden');
@@ -612,133 +795,179 @@
             }
         }
 
-        // التالي
+        // Next button
         nextBtn.addEventListener('click', function() {
             if (validateStep(currentStep)) {
                 updateStep(currentStep + 1);
             }
         });
 
-        // السابق
+        // Previous button
         prevBtn.addEventListener('click', function() {
             updateStep(currentStep - 1);
         });
 
-        // اختيار نوع النشاط التجاري
+        // Business type selection
         businessTypeCards.forEach(card => {
             card.addEventListener('click', function() {
                 const type = this.dataset.type;
                 
-                // إزالة التحديد السابق
+                // Remove previous selection
                 businessTypeCards.forEach(c => c.classList.remove('selected'));
                 
-                // إضافة التحديد الجديد
+                // Add new selection
                 this.classList.add('selected');
                 
-                // تحديث الحقل المخفي
+                // Update hidden field
                 businessTypeInput.value = type;
                 
-                // إخفاء رسالة الخطأ
+                // Hide error message
                 document.getElementById('businessTypeError').classList.add('hidden');
             });
         });
 
-        // التحقق من صحة الخطوة
+        // Platform selection
+        platformSelections.forEach(selection => {
+            selection.addEventListener('click', function() {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                
+                if (checkbox.checked) {
+                    this.classList.add('selected');
+                } else {
+                    this.classList.remove('selected');
+                }
+            });
+        });
+
+        // Step validation
         function validateStep(step) {
             let isValid = true;
             
             if (step === 1) {
-                // التحقق من المعلومات الأساسية
+                // Validate basic information
                 const firstName = document.getElementById('firstName').value.trim();
                 const lastName = document.getElementById('lastName').value.trim();
                 const email = document.getElementById('email').value.trim();
                 const password = document.getElementById('password').value;
                 const confirmPassword = document.getElementById('confirmPassword').value;
                 
-                // التحقق من الاسم الأول
+                // First name validation
                 if (!firstName) {
-                    showError('firstNameError', 'الاسم الأول مطلوب');
+                    showError('firstNameError', 'First name is required');
                     isValid = false;
                 } else {
                     hideError('firstNameError');
                 }
                 
-                // التحقق من الاسم الأخير
+                // Last name validation
                 if (!lastName) {
-                    showError('lastNameError', 'الاسم الأخير مطلوب');
+                    showError('lastNameError', 'Last name is required');
                     isValid = false;
                 } else {
                     hideError('lastNameError');
                 }
                 
-                // التحقق من البريد الإلكتروني
+                // Email validation
                 if (!validateEmail(email)) {
-                    showError('emailError', 'البريد الإلكتروني غير صحيح');
+                    showError('emailError', 'Please enter a valid email address');
                     isValid = false;
                 } else {
                     hideError('emailError');
                 }
                 
-                // التحقق من كلمة المرور
+                // Password validation
                 if (!validatePassword(password)) {
-                    showError('passwordError', 'كلمة المرور يجب أن تكون 8 أحرف على الأقل');
+                    showError('passwordError', 'Password must be at least 8 characters');
                     isValid = false;
                 } else {
                     hideError('passwordError');
                 }
                 
-                // التحقق من تطابق كلمة المرور
+                // Confirm password validation
                 if (password !== confirmPassword) {
-                    showError('confirmPasswordError', 'كلمة المرور غير متطابقة');
+                    showError('confirmPasswordError', 'Passwords do not match');
                     isValid = false;
                 } else {
                     hideError('confirmPasswordError');
                 }
                 
             } else if (step === 2) {
-                // التحقق من البيانات التجارية
+                // Validate business information
                 const businessType = businessTypeInput.value;
                 
                 if (!businessType) {
-                    showError('businessTypeError', 'الرجاء تحديد نوع النشاط التجاري');
+                    showError('businessTypeError', 'Please select your business type');
                     isValid = false;
                 } else {
                     hideError('businessTypeError');
                 }
                 
             } else if (step === 3) {
-                // التحقق من الموافقة على الشروط
+                // Validate platform selection
+                const selectedPlatforms = document.querySelectorAll('input[name="platforms[]"]:checked');
+                
+                if (selectedPlatforms.length === 0) {
+                    showError('platformsError', 'Please select at least one platform');
+                    isValid = false;
+                } else {
+                    hideError('platformsError');
+                }
+                
+            } else if (step === 4) {
+                // Validate agreements
                 const agreeTerms = document.getElementById('agreeTerms').checked;
+                const agreeDPA = document.getElementById('agreeDPA').checked;
                 
                 if (!agreeTerms) {
-                    showError('termsError', 'يجب الموافقة على الشروط والأحكام');
+                    showError('termsError', 'You must agree to the Terms of Service and Privacy Policy');
                     isValid = false;
                 } else {
                     hideError('termsError');
+                }
+                
+                if (!agreeDPA) {
+                    showError('dpaError', 'You must agree to the Data Processing Agreement');
+                    isValid = false;
+                } else {
+                    hideError('dpaError');
                 }
             }
             
             return isValid;
         }
 
-        // تحديث الملخص
+        // Update summary
         function updateSummary() {
+            // Name
             document.getElementById('summaryName').textContent = 
-                `الاسم: ${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`;
+                `Name: ${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`;
             
+            // Email
             document.getElementById('summaryEmail').textContent = 
-                `البريد: ${document.getElementById('email').value}`;
+                `Email: ${document.getElementById('email').value}`;
             
+            // Business type
             const businessType = document.querySelector('.business-type-card.selected');
             document.getElementById('summaryBusiness').textContent = 
-                `نوع النشاط: ${businessType ? businessType.querySelector('div:nth-child(2)').textContent : 'غير محدد'}`;
+                `Business: ${businessType ? businessType.querySelector('.font-medium').textContent : 'Not selected'}`;
             
+            // Selected platforms
+            const selectedPlatforms = Array.from(document.querySelectorAll('input[name="platforms[]"]:checked'))
+                .map(cb => {
+                    const platformCard = cb.closest('.platform-selection');
+                    return platformCard.querySelector('.font-medium').textContent;
+                });
+            document.getElementById('summaryPlatforms').textContent = 
+                `Platforms: ${selectedPlatforms.length > 0 ? selectedPlatforms.join(', ') : 'None'}`;
+            
+            // Selected plan
             const selectedPlan = document.querySelector('input[name="plan"]:checked');
             document.getElementById('summaryPlan').textContent = 
-                `الخطة: ${selectedPlan ? selectedPlan.nextElementSibling.querySelector('.font-bold').textContent : 'غير محددة'}`;
+                `Plan: ${selectedPlan ? selectedPlan.nextElementSibling.querySelector('.font-bold').textContent : 'Not selected'}`;
         }
 
-        // قوة كلمة المرور
+        // Password strength indicator
         const passwordInput = document.getElementById('password');
         const strengthBars = [
             document.getElementById('passwordStrength1'),
@@ -752,16 +981,16 @@
             const password = this.value;
             let strength = 0;
             
-            // طول كلمة المرور
+            // Length checks
             if (password.length >= 8) strength++;
             if (password.length >= 12) strength++;
             
-            // أحرف متنوعة
+            // Character variety
             if (/[A-Z]/.test(password)) strength++;
             if (/[0-9]/.test(password)) strength++;
             if (/[^A-Za-z0-9]/.test(password)) strength++;
             
-            // تحديث المؤشر
+            // Update indicator
             strengthBars.forEach((bar, index) => {
                 if (index < Math.min(strength, 4)) {
                     bar.style.backgroundColor = getStrengthColor(strength);
@@ -770,20 +999,20 @@
                 }
             });
             
-            // تحديث النص
-            const texts = ['ضعيفة', 'متوسطة', 'جيدة', 'قوية', 'قوية جداً'];
+            // Update text
+            const texts = ['Weak', 'Fair', 'Good', 'Strong', 'Very Strong'];
             strengthText.textContent = texts[Math.min(strength, 4)];
             strengthText.style.color = getStrengthColor(strength);
         });
 
         function getStrengthColor(strength) {
-            if (strength <= 1) return '#ef4444'; // أحمر
-            if (strength === 2) return '#f59e0b'; // برتقالي
-            if (strength === 3) return '#10b981'; // أخضر
-            return '#3b82f6'; // أزرق
+            if (strength <= 1) return '#ef4444'; // Red
+            if (strength === 2) return '#f59e0b'; // Orange
+            if (strength === 3) return '#10b981'; // Green
+            return '#3b82f6'; // Blue
         }
 
-        // تبديل رؤية كلمة المرور
+        // Toggle password visibility
         document.getElementById('togglePassword').addEventListener('click', function() {
             const passwordInput = document.getElementById('password');
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -791,42 +1020,42 @@
             this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
         });
 
-        // التحقق من صحة البريد الإلكتروني
+        // Email validation
         function validateEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
 
-        // التحقق من صحة كلمة المرور
+        // Password validation
         function validatePassword(password) {
             return password.length >= 8;
         }
 
-        // عرض خطأ
+        // Show error
         function showError(elementId, message) {
             const element = document.getElementById(elementId);
             element.textContent = message;
             element.classList.remove('hidden');
             
-            // اهتزاز العنصر
+            // Add shake animation
             element.parentElement.classList.add('animate-shake');
             setTimeout(() => {
                 element.parentElement.classList.remove('animate-shake');
             }, 500);
         }
 
-        // إخفاء خطأ
+        // Hide error
         function hideError(elementId) {
             document.getElementById(elementId).classList.add('hidden');
         }
 
-        // إرسال النموذج
+        // Form submission
         registerForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            if (!validateStep(3)) return;
+            if (!validateStep(4)) return;
             
-            // عرض حالة التحميل
+            // Show loading state
             const btnText = document.getElementById('btnText');
             const btnLoading = document.getElementById('btnLoading');
             const submitBtn = document.getElementById('submitBtn');
@@ -835,31 +1064,48 @@
             btnLoading.classList.remove('hidden');
             submitBtn.disabled = true;
             
-            // محاكاة إرسال البيانات
+            // Simulate API call
             try {
+                // Collect form data
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    businessType: document.getElementById('businessType').value,
+                    platforms: Array.from(document.querySelectorAll('input[name="platforms[]"]:checked')).map(cb => cb.value),
+                    plan: document.querySelector('input[name="plan"]:checked').value,
+                    apiAccess: document.getElementById('apiAccess').checked,
+                    newsletter: document.querySelector('input[name="newsletter"]').checked,
+                    tutorials: document.querySelector('input[name="tutorials"]').checked,
+                    webinars: document.querySelector('input[name="webinars"]').checked
+                };
+                
+                console.log('Registration data:', formData);
+                
+                // Simulate network delay
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 
-                // نجاح التسجيل
-                submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>تم إنشاء الحساب بنجاح!';
+                // Success
+                submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Account Created Successfully!';
                 submitBtn.classList.remove('gradient-bg');
                 submitBtn.classList.add('bg-green-600');
                 
-                // توجيه المستخدم
+                // Redirect to dashboard
                 setTimeout(() => {
                     window.location.href = 'dashboard.html';
                 }, 1500);
                 
             } catch (error) {
-                // فشل التسجيل
+                // Failure
                 btnText.classList.remove('hidden');
                 btnLoading.classList.add('hidden');
                 submitBtn.disabled = false;
                 
-                showError('termsError', 'حدث خطأ أثناء إنشاء الحساب. يرجى المحاولة مرة أخرى.');
+                showError('termsError', 'Error creating account. Please try again.');
             }
         });
 
-        // إضافة تأثير الاهتزاز
+        // Add shake animation CSS
         const style = document.createElement('style');
         style.textContent = `
             @keyframes shake {
